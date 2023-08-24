@@ -1,0 +1,105 @@
+use("db_rappi_campus");
+db.createCollection("clientes", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "clientes",
+            required: [
+                "_id",
+                "id_cliente",
+                "nombre",
+                "apellido",
+                "correo",
+                "direccion_entrega",
+                "numero_celular",
+                "cedula",
+                "fecha_nacimiento",
+                "sexo",
+            ],
+            properties: {
+                _id: { bsonType: "objectId" },
+                id_cliente: {
+                    bsonType: "string",
+                },
+                nombre: {
+                    bsonType: "string",
+                },
+                apellido: {
+                    bsonType: "string",
+                },
+                correo: {
+                    bsonType: "string",
+                },
+                direccion_entrega: {
+                    bsonType: "string",
+                },
+                numero_celular: {
+                    bsonType: "string",
+                },
+                cedula: {
+                    bsonType: "string",
+                },
+                fecha_nacimiento: {
+                    bsonType: "string",
+                },
+                sexo: {
+                    enum: ["M", "F"],
+                },
+            },
+            additionalProperties: false,
+        },
+    },
+});
+db.createCollection("repartidores", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "repartidores",
+            required: [
+                "_id",
+                "id_repartidor",
+                "nombre",
+                "apellido",
+                "correo",
+                "numero_celular",
+                "cedula",
+                "fecha_nacimiento",
+                "sexo",
+                "tipo_vehiculo",
+            ],
+            properties: {
+                _id: { bsonType: "objectId" },
+                id_repartidor: {
+                    bsonType: "string",
+                },
+                nombre: {
+                    bsonType: "string",
+                },
+                apellido: {
+                    bsonType: "string",
+                },
+                correo: {
+                    bsonType: "string",
+                },
+                numero_celular: {
+                    bsonType: "string",
+                },
+                cedula: {
+                    bsonType: "string",
+                },
+                fecha_nacimiento: {
+                    bsonType: "string",
+                },
+                sexo: {
+                    enum: ["M", "F"],
+                },
+                tipo_vehiculo: {
+                    enum: ["Bicicleta", "Moto", "Carro"],
+                },
+            },
+            additionalProperties: false,
+        },
+    },
+});
+
+//TODO: Crear colecciones de Restaurantes, Productos, Pedidos, etc.
