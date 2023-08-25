@@ -119,3 +119,113 @@ db.counters.insertMany([
     { _id: "repartidoresID", sequence_value: 0 }
 ]);
 //TODO: Crear colecciones de Restaurantes, Productos, Pedidos, etc.
+//PRODUCTOS
+db.createCollection("productos",{
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "productos",
+            required: [
+                "_id",
+                "id_producto",
+                "id_restaurante",
+                "nombre",
+                "valor_unitario",
+                "descripcion",
+                "foto_producto",
+                "stock"
+            ],
+            properties: {
+                _id: { bsonType: "objectId" },
+                id_producto: {
+                    bsonType: "int",
+                },
+                id_restaurante: {
+                    bsonType: "int",
+                },
+                nombre: {
+                    bsonType: "string",
+                },
+                valor_unitario: {
+                    bsonType: "double",
+                },
+                descripcion: {
+                    bsonType: "string",
+                },
+                foto_producto: {
+                    bsonType: "string",
+                },
+                stock: {
+                        bsonType: "int",
+                },
+            },
+            additionalProperties: false,
+        },
+    },
+});
+db.productos.createIndex({ id_producto: 1 }, { unique: true })
+
+//PEDIDOS
+db.createCollection("pedidos",{
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "pedidos",
+            required: [
+                "_id",
+                "id_pedido",
+                "id_cliente",
+                "id_repartidor",
+                "id_restaurante",
+                "productos",
+                "metodo_pago",
+                "valor_total",
+                "fecha_pedido"
+            ],
+            properties: {
+                _id: { bsonType: "objectId" },
+                id_pedido: {
+                    bsonType: "int",
+                },
+                id_cliente: {
+                    bsonType: "int",
+                },
+                id_repartidor: {
+                    bsonType: "int",
+                },
+                id_restaurante: {
+                    bsonType: "int",
+                },
+                productos: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "object",
+                        required: [
+                            "id_producto",
+                            "cantidad",
+                        ],
+                        properties: {
+                            id_producto: {
+                                bsonType: "int",
+                            },
+                            cantidad: {
+                                bsonType: "int",
+                            },
+                        },
+                    },
+                },
+                metodo_pago: {
+                    enum: ["Efectivo", "Tarjeta"],
+                },
+                valor_total: {
+                    bsonType: "double",
+                },
+                fecha_pedido: {
+                    bsonType: "Date",
+                },
+            },
+            additionalProperties: false,
+        },
+    },
+});
+db.pedidos.createIndex({ id_pedido: 1 }, { unique: true })
