@@ -1,4 +1,5 @@
 use("db_rappi_campus");
+//CLIENTES
 db.createCollection("clientes", {
     validator: {
         $jsonSchema: {
@@ -6,7 +7,6 @@ db.createCollection("clientes", {
             title: "clientes",
             required: [
                 "_id",
-                "id_cliente",
                 "nombre",
                 "apellido",
                 "correo",
@@ -19,7 +19,7 @@ db.createCollection("clientes", {
             properties: {
                 _id: { bsonType: "objectId" },
                 id_cliente: {
-                    bsonType: "string",
+                    bsonType: "int",
                 },
                 nombre: {
                     bsonType: "string",
@@ -50,6 +50,13 @@ db.createCollection("clientes", {
         },
     },
 });
+db.clientes.createIndex({ id_cliente: 1 }, { unique: true })
+db.clientes.createIndex({ cedula: 1 }, { unique: true })
+db.clientes.createIndex({ correo: 1 }, { unique: true })
+db.clientes.createIndex({ numero_celular: 1 }, {unique: true})
+
+
+//REPARTIDORES
 db.createCollection("repartidores", {
     validator: {
         $jsonSchema: {
@@ -57,7 +64,6 @@ db.createCollection("repartidores", {
             title: "repartidores",
             required: [
                 "_id",
-                "id_repartidor",
                 "nombre",
                 "apellido",
                 "correo",
@@ -70,7 +76,7 @@ db.createCollection("repartidores", {
             properties: {
                 _id: { bsonType: "objectId" },
                 id_repartidor: {
-                    bsonType: "string",
+                    bsonType: "int",
                 },
                 nombre: {
                     bsonType: "string",
@@ -101,5 +107,15 @@ db.createCollection("repartidores", {
         },
     },
 });
+db.repartidores.createIndex({ id_repartidor: 1 }, { unique: true })
+db.repartidores.createIndex({ cedula: 1 }, { unique: true })
+db.repartidores.createIndex({ correo: 1 }, { unique: true })
+db.repartidores.createIndex({ numero_celular: 1 }, {unique: true})
 
+//AUTOINCREMENTO
+db.createCollection("counters");
+db.counters.insertMany([
+    { _id: "clientesID", sequence_value: 0 },
+    { _id: "repartidoresID", sequence_value: 0 }
+]);
 //TODO: Crear colecciones de Restaurantes, Productos, Pedidos, etc.
