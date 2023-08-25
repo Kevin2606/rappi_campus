@@ -189,6 +189,13 @@ Bibliografía:
 - [Notion, qué es y cómo funciona - El Grupo Informático](https://www.elgrupoinformatico.com/tutoriales/notion-que-como-funciona-t77621.html)
 
 
+# Esquema de la Base de Datos
+
+![Esquema](src/img/image.png)
+
+La base de datos que se utilizara para el proyecto sera MongoDB, ya que es una base de datos NoSQL, que permite almacenar datos en formato JSON, lo que permite una mayor flexibilidad y escalabilidad.
+
+
 ## Autores
 - [Kevin Andres Gallardo Robles](https://github.com/Kevin2606)
 - [Gerson Hernandez Olave](https://github.com/gersonhdz8)
