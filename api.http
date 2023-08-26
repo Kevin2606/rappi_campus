@@ -1,0 +1,40 @@
+### Rappi_Campus - Prueba de Endpoinst
+### REPARTIDORES
+
+### Obtiene todos los repartidores
+GET http://localhost:3000/repartidores
+### Obtener repartidor por id
+GET http://localhost:3000/repartidores/1
+### Obtener repartidor por cedula
+GET http://localhost:3000/repartidores/cedula/123456781
+### Obtener repartidor por correo
+GET http://localhost:3000/repartidores/correo/luisgomez@gmail.com
+### Crear repartidor
+POST http://localhost:3000/repartidores
+Content-Type: application/json
+
+{
+
+    "nombre": "Luis",
+    "apellido": "Gomez",
+    "correo": "luis_gomez@gmail.com",
+    "numero_celular": "3001234567",
+    "cedula": "33333",
+    "fecha_nacimiento": "1990-01-01",
+    "sexo": "M",
+    "tipo_vehiculo": "Carro"
+}
+### Actualizar repartidor
+PUT http://localhost:3000/repartidores/4
+Content-Type: application/json
+
+{
+    "apellido": "Fernando",
+    "correo": "luis_fernando@gmail.com"
+}
+
+### Eliminar repartidor
+DELETE http://localhost:3000/repartidores/4
+
+### PEDIDOS
+
