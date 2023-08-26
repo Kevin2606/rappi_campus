@@ -38,3 +38,47 @@ DELETE http://localhost:3000/repartidores/4
 
 ### PEDIDOS
 
+### Obtiene todos los pedidos
+GET http://localhost:3000/pedidos
+### Obtener pedido por id
+GET http://localhost:3000/pedidos/2
+### Obtener pedidos por id de cliente
+GET http://localhost:3000/pedidos/cliente/1
+### Obtener pedidos por id de repartidor
+GET http://localhost:3000/pedidos/repartidor/1
+### Obtener pedidos por id de restaurante
+GET http://localhost:3000/pedidos/restaurante/1
+### Crear pedido
+POST http://localhost:3000/pedidos
+Content-Type: application/json
+
+{
+    "id_cliente": 99,
+    "id_repartidor": 99,
+    "id_restaurante": 99,
+    "productos": [
+        {
+            "id_producto": 1,
+            "cantidad": 2
+        },
+        {
+            "id_producto": 2,
+            "cantidad": 1
+        }
+    ],
+    "metodo_pago": "Efectivo",
+    "valor_total": 20000,
+    "fecha_pedido": "2023-08-25"
+}
+
+### Actualizar pedido
+PUT http://localhost:3000/pedidos/19
+Content-Type: application/json
+
+{
+    "id_cliente": 12,
+    "id_repartidor": 44
+}
+
+### Eliminar pedido
+DELETE http://localhost:3000/pedidos/19
