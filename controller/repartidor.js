@@ -11,7 +11,7 @@ export default class RepartidorController {
     }
     static async obtenerRepartidor(req, res) {
         try {
-            const repartidor = await RepartidorModel.obtenerRepartidor(req.params.id);
+            const repartidor = await RepartidorModel.obtenerRepartidor(parseInt(req.params.id));
             res.status(200).json(repartidor);
         } catch (error) {
             res.status(error.status).json({ message: error.message });
@@ -28,7 +28,7 @@ export default class RepartidorController {
 
     static async actualizarRepartidor(req, res) {
         try {
-            const repartidor = await RepartidorModel.actualizarRepartidor(req.params.id, req.body);
+            const repartidor = await RepartidorModel.actualizarRepartidor(parseInt(req.params.id), req.body);
             res.status(200).json(repartidor);
         } catch (error) {
             res.status(error.status).json({ message: error.message });
@@ -37,7 +37,7 @@ export default class RepartidorController {
 
     static async eliminarRepartidor(req, res) {
         try {
-            const repartidor = await RepartidorModel.eliminarRepartidor(req.params.id);
+            const repartidor = await RepartidorModel.eliminarRepartidor(parseInt(req.params.id));
             res.status(200).json(repartidor);
         } catch (error) {
             res.status(error.status).json({ message: error.message });
