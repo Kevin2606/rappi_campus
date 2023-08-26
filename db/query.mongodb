@@ -112,15 +112,6 @@ db.repartidores.createIndex({ cedula: 1 }, { unique: true })
 db.repartidores.createIndex({ correo: 1 }, { unique: true })
 db.repartidores.createIndex({ numero_celular: 1 }, {unique: true})
 
-//AUTOINCREMENTO
-db.createCollection("counters");
-db.counters.insertMany([
-    { _id: "clientesID", sequence_value: 0 },
-    { _id: "repartidoresID", sequence_value: 0 },
-    { _id: "pedidosID", sequence_value: 0 },
-    { _id: "productosID", sequence_value: 0 },
-]);
-//TODO: Crear colecciones de Restaurantes, Productos, Pedidos, etc.
 //PRODUCTOS
 db.createCollection("productos",{
     validator: {
@@ -149,7 +140,7 @@ db.createCollection("productos",{
                     bsonType: "string",
                 },
                 valor_unitario: {
-                    bsonType: "double",
+                    bsonType: "decimal",
                 },
                 descripcion: {
                     bsonType: "string",
@@ -220,7 +211,7 @@ db.createCollection("pedidos", {
                     enum: ["Efectivo", "Tarjeta"],
                 },
                 valor_total: {
-                    bsonType: "double",
+                    bsonType: "decimal",
                 },
                 fecha_pedido: {
                     bsonType: "date",
@@ -231,3 +222,119 @@ db.createCollection("pedidos", {
     },
 });
 db.pedidos.createIndex({ id_pedido: 1 }, { unique: true })
+
+//Documentos de prueba
+db.clientes.insertMany([
+    {
+        id_cliente: 1,
+        nombre: "Juan",
+        apellido: "Perez",
+        correo: "juanperez@gmail.com",
+        direccion_entrega: "Calle 1 # 1-1",
+        numero_celular: "3000000000",
+        cedula: "123456789",
+        fecha_nacimiento: "1990-01-01",
+        sexo: "M",
+    },
+    {
+        id_cliente: 2,
+        nombre: "Maria",
+        apellido: "Gomez",
+        correo: "mariagomez@gmail.com",
+        direccion_entrega: "Calle 2 # 2-2",
+        numero_celular: "3000000001",
+        cedula: "123456780",
+        fecha_nacimiento: "1990-01-02",
+        sexo: "F",
+    },
+]);
+db.repartidores.insertMany([
+    {
+        id_repartidor: 1,
+        nombre: "Pedro",
+        apellido: "Gomez",
+        correo: "pedrogomez@gmail.com",
+        numero_celular: "3000000002",
+        cedula: "123456781",
+        fecha_nacimiento: "1990-01-03",
+        sexo: "M",
+        tipo_vehiculo: "Bicicleta",
+    },
+    {
+        id_repartidor: 2,
+        nombre: "Luis",
+        apellido: "Gomez",
+        correo: "luisgomez@gmail.com",
+        numero_celular: "3000000003",
+        cedula: "123456782",
+        fecha_nacimiento: "1990-01-04",
+        sexo: "M",
+        tipo_vehiculo: "Moto",
+    },
+]);
+use("db_rappi_campus");
+db.productos.insertMany([
+    {
+        id_producto: 1,
+        id_restaurante: 1,
+        nombre: "Hamburguesa",
+        valor_unitario: Decimal128("2000"),
+        descripcion: "Hamburguesa con queso",
+        foto_producto: "https://assets.unileversolutions.com/recipes-v2/115358.jpg",
+        stock: 10,
+    },
+    {
+        id_producto: 2,
+        id_restaurante: 1,
+        nombre: "Pizza",
+        valor_unitario: Decimal128("15000"),
+        descripcion: "Pizza de peperoni",
+        foto_producto: "https://www.olivetto.com.co/wp-content/uploads/PizzaItalianaClasica-ImagenDestacada-1200x1800.jpg",
+        stock: 10,
+    },
+]);
+db.pedidos.insertMany([
+    {
+        id_pedido: 1,
+        id_cliente: 1,
+        id_repartidor: 1,
+        id_restaurante: 1,
+        productos: [
+            {
+                id_producto: 1,
+                cantidad: 1,
+            },
+            {
+                id_producto: 2,
+                cantidad: 2,
+            },
+        ],
+        metodo_pago: "Efectivo",
+        valor_total: Decimal128("35000"),
+        fecha_pedido: new Date(),
+    },
+    {
+        id_pedido: 2,
+        id_cliente: 2,
+        id_repartidor: 2,
+        id_restaurante: 1,
+        productos: [
+            {
+                id_producto: 1,
+                cantidad: 1,
+            },
+        ],
+        metodo_pago: "Tarjeta",
+        valor_total: Decimal128("2000"),
+        fecha_pedido: new Date(),
+    },
+]);
+
+//AUTOINCREMENTO
+db.createCollection("counters");
+db.counters.insertMany([
+    { _id: "clientesID", sequence_value: 0 },
+    { _id: "repartidoresID", sequence_value: 0 },
+    { _id: "pedidosID", sequence_value: 0 },
+    { _id: "productosID", sequence_value: 0 },
+]);
