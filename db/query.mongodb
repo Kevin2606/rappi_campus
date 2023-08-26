@@ -116,7 +116,9 @@ db.repartidores.createIndex({ numero_celular: 1 }, {unique: true})
 db.createCollection("counters");
 db.counters.insertMany([
     { _id: "clientesID", sequence_value: 0 },
-    { _id: "repartidoresID", sequence_value: 0 }
+    { _id: "repartidoresID", sequence_value: 0 },
+    { _id: "pedidosID", sequence_value: 0 },
+    { _id: "productosID", sequence_value: 0 },
 ]);
 //TODO: Crear colecciones de Restaurantes, Productos, Pedidos, etc.
 //PRODUCTOS
@@ -166,7 +168,7 @@ db.createCollection("productos",{
 db.productos.createIndex({ id_producto: 1 }, { unique: true })
 
 //PEDIDOS
-db.createCollection("pedidos",{
+db.createCollection("pedidos", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
@@ -221,7 +223,7 @@ db.createCollection("pedidos",{
                     bsonType: "double",
                 },
                 fecha_pedido: {
-                    bsonType: "Date",
+                    bsonType: "date",
                 },
             },
             additionalProperties: false,
