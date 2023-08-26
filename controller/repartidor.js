@@ -1,4 +1,4 @@
-import RepartidorModel from '../models/repartidor';
+import RepartidorModel from '../models/repartidor.js';
 
 export default class RepartidorController {
     static async obtenerRepartidores(req, res) {
