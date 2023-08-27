@@ -9,6 +9,6 @@ router.get("/getProductByRestaurant/:id", ProductoController.getProductByRestaur
 router.post("/create", ProductoController.createProduct)
 router.delete("/delete/:id", ProductoController.deleteProduct)
 router.delete("/deleteByRestaurant/:id", ProductoController.deleteAllProductByRestaurant)
-router.put("/update/:id", ProductoController.updateClient)
+router.put("/update/:id", ProductoController.updateProduct)
 
 export default router;
