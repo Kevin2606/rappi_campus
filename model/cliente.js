@@ -1,11 +1,7 @@
 import connect from "../db/connectDB.js";
 
 const db = await connect().collection("clientes");
-export class ClienteModel{
-
-    constructor(){
-
-    }
+export default class ClienteModel{  
 
     static async createClient(cliente)
     {
