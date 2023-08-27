@@ -1,5 +1,5 @@
 ### Rappi_Campus - Prueba de Endpoinst
-### REPARTIDORES
+### REPARTIDORES ---------------------------------------------------------------------------------------------
 
 ### Obtiene todos los repartidores
 GET http://localhost:3000/repartidores
@@ -36,7 +36,7 @@ Content-Type: application/json
 ### Eliminar repartidor
 DELETE http://localhost:3000/repartidores/4
 
-### PEDIDOS
+### PEDIDOS         ---------------------------------------------------------------------------------------------
 
 ### Obtiene todos los pedidos
 GET http://localhost:3000/pedidos
@@ -82,3 +82,34 @@ Content-Type: application/json
 
 ### Eliminar pedido
 DELETE http://localhost:3000/pedidos/19
+
+### RESTAURANTES                ---------------------------------------------------------------------------------------------
+
+### Obtiene todos los restaurantes
+GET http://localhost:3000/restaurantes
+### Obtener restaurante por id
+GET http://localhost:3000/restaurantes/11
+### Crear restaurante
+POST http://localhost:3000/restaurantes
+Content-Type: application/json
+
+{
+    "nombre": "Restaurxante 3",
+    "direccion": "Calle 3 # 2-2",
+    "numero_celular": "33455",
+    "correo": "restauran44te3@gmail.com",
+    "horario_atencion": "Lunes a Viernes 8:00 am - 5:00 pm",
+    "foto_restaurante": "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg"
+}
+
+### Actualizar restaurante
+PUT http://localhost:3000/restaurantes/11
+Content-Type: application/json
+
+{
+    "nombre": "Restaurxante 44444"
+}
+
+### Eliminar restaurante
+DELETE http://localhost:3000/restaurantes/11
+    
