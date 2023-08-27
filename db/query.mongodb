@@ -223,6 +223,55 @@ db.createCollection("pedidos", {
 });
 db.pedidos.createIndex({ id_pedido: 1 }, { unique: true })
 
+//RESTAURANTES
+db.createCollection("restaurantes", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "restaurantes",
+            required: [
+                "_id",
+                "id_restaurante",
+                "nombre",
+                "direccion",
+                "numero_celular",
+                "correo",
+                "horario_atencion",
+                "foto_restaurante",
+            ],
+            properties: {
+                _id: { bsonType: "objectId" },
+                id_restaurante: {
+                    bsonType: "int",
+                },
+                nombre: {
+                    bsonType: "string",
+                },
+                direccion: {
+                    bsonType: "string",
+                },
+                numero_celular: {
+                    bsonType: "string",
+                },
+                correo: {
+                    bsonType: "string",
+                },
+                horario_atencion: {
+                    bsonType: "string",
+                },
+                foto_restaurante: {
+                    bsonType: "string",
+                },
+            },
+            additionalProperties: false,
+        },
+    },
+});
+db.restaurantes.createIndex({ id_restaurante: 1 }, { unique: true })
+db.restaurantes.createIndex({ correo: 1 }, { unique: true })
+db.restaurantes.createIndex({ numero_celular: 1 }, {unique: true})
+db.restaurantes.createIndex({ nombre: 1 }, {unique: true})
+
 //Documentos de prueba
 db.clientes.insertMany([
     {
@@ -272,7 +321,6 @@ db.repartidores.insertMany([
         tipo_vehiculo: "Moto",
     },
 ]);
-use("db_rappi_campus");
 db.productos.insertMany([
     {
         id_producto: 1,
@@ -330,11 +378,33 @@ db.pedidos.insertMany([
     },
 ]);
 
+db.restaurantes.insertMany([
+    {
+        id_restaurante: 1,
+        nombre: "Restaurante 1",
+        direccion: "Calle 1 # 1-1",
+        numero_celular: "3000000004",
+        correo: "restaurante1@gmail.com",
+        horario_atencion: "Lunes a Viernes 8:00 am - 5:00 pm",
+        foto_restaurante: "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
+    },
+    {
+        id_restaurante: 2,
+        nombre: "Restaurante 2",
+        direccion: "Calle 2 # 2-2",
+        numero_celular: "3000000005",
+        correo: "restaurante2@gmail.com",
+        horario_atencion: "Lunes a Viernes 8:00 am - 5:00 pm",
+        foto_restaurante: "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
+    }
+]);
+
 //AUTOINCREMENTO
 db.createCollection("counters");
 db.counters.insertMany([
-    { _id: "clientesID", sequence_value: 0 },
-    { _id: "repartidoresID", sequence_value: 0 },
-    { _id: "pedidosID", sequence_value: 0 },
-    { _id: "productosID", sequence_value: 0 },
+    { _id: "clientesID", sequence_value: 2 },
+    { _id: "repartidoresID", sequence_value: 2 },
+    { _id: "pedidosID", sequence_value: 2 },
+    { _id: "productosID", sequence_value: 2 },
+    { _id: "restaurantesID", sequence_value: 2 },
 ]);

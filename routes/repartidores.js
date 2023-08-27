@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import RepartidorController from '../controller/repartidor';
+import RepartidorController from '../controller/repartidor.js';
 
 const router = Router();
 
