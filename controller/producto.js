@@ -61,7 +61,7 @@ export default class ProductoController {
         }
 
     }
-    static async updateClient(req,res){
+    static async updateProduct(req,res){
 
         try {
             const producto = await ProductoModel.updateProduct(parseInt(req.params.id),req.body)

@@ -148,3 +148,45 @@ Content-Type: application/json
 
 ### Eliminar Cliente
 DELETE http://localhost:3000/clientes/delete/2
+
+
+### PRODUCTOS ---------------------------------------------------------------------------------------------
+
+### Obtiene todos los oroductos
+GET http://localhost:3000/productos/getAllProduct
+
+### Obtener productos por id
+GET http://localhost:3000/productos/getProduct/1
+
+### Obtener productos por id de restaurante
+GET http://localhost:3000/productos/getProductByRestaurant/1
+
+### Crear producto
+POST http://localhost:3000/productos/create
+Content-Type: application/json
+
+{
+    "id_restaurante": 2,
+    "nombre": "Lasagna",
+    "valor_unitario": 20000,
+    "descripcion": "Lasagna mixta",
+    "foto_producto": "https://images.pexels.com/photos/5864352/pexels-photo-5864352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "stock": 20
+}
+### Actualizar Producto por id
+PUT http://localhost:3000/productos/update/1
+Content-Type: application/json
+
+{
+    "nombre": "Huevo Frito",
+    "valor_unitario": 10000,
+    "descripcion": "Huevo frito sin sal",
+    "foto_producto": "https://images.pexels.com/photos/7937471/pexels-photo-7937471.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "stock": 50
+}
+
+### Eliminar Producto por id 
+DELETE http://localhost:3000/productos/delete/2
+
+### Eliminar todos los productos de un restaurent por id de restaurante
+DELETE http://localhost:3000/productos/deleteByRestaurant/2

@@ -119,8 +119,7 @@ db.createCollection("productos",{
             bsonType: "object",
             title: "productos",
             required: [
-                "_id",
-                "id_producto",
+                "_id",               
                 "id_restaurante",
                 "nombre",
                 "valor_unitario",
@@ -140,7 +139,7 @@ db.createCollection("productos",{
                     bsonType: "string",
                 },
                 valor_unitario: {
-                    bsonType: "decimal",
+                    bsonType: "int",
                 },
                 descripcion: {
                     bsonType: "string",

@@ -44,7 +44,7 @@ export default class ProductoModel{
                         "_id",            
                     ]        
                 }    
-                ])
+                ]).toArray();
             return products    
         }
         catch(error)
@@ -60,7 +60,7 @@ export default class ProductoModel{
             producto.id_producto = await getNextSequenceValue("productos");
             return await db.insertOne(producto);
         } catch (error) {
-            console.log(error);
+            console.log(error.errInfo.details.schemaRulesNotSatisfied[0].propertiesNotSatisfied[0]);
             if (error.code === 11000)
                 return {
                     status: 400,
