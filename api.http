@@ -112,4 +112,39 @@ Content-Type: application/json
 
 ### Eliminar restaurante
 DELETE http://localhost:3000/restaurantes/11
-    
+
+
+### CLIENTES ---------------------------------------------------------------------------------------------
+
+### Obtiene todos los clientes
+GET http://localhost:3000/clientes/getAllClient
+
+### Obtener clientes por id
+GET http://localhost:3000/clientes/getClient/2
+
+### Crear cliente
+POST http://localhost:3000/clientes/create
+Content-Type: application/json
+
+{
+
+    "nombre": "Gerson",
+    "apellido": "Hernández",
+    "correo": "gersonhdz@gmail.com",
+    "direccion_entrega": "Calle 26a # 11-30",
+    "numero_celular": "3122341234",
+    "cedula": "1096243865",
+    "fecha_nacimiento": "1998-10-20",
+    "sexo": "M"
+}
+### Actualizar Cliente
+PUT http://localhost:3000/clientes/update/2
+Content-Type: application/json
+
+{
+    "apellido": "Olave",
+    "correo": "gersonhddddd@gmail.com"
+}
+
+### Eliminar Cliente
+DELETE http://localhost:3000/clientes/delete/2

@@ -5,6 +5,8 @@ const router= Router()
 
 router.get("/getClient/:id", ClienteController.getClient)
 router.get("/getAllClient", ClienteController.getAllClient)
-router.post("/createClient", ClienteController.createClient)
-router.delete("/deleteClient/:id", ClienteController.deleteClient)
-router.put("/updateClient/:id", ClienteController.updateClient)
+router.post("/create", ClienteController.createClient)
+router.delete("/delete/:id", ClienteController.deleteClient)
+router.put("/update/:id", ClienteController.updateClient)
+
+export default router;
