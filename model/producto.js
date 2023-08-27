@@ -87,7 +87,7 @@ export default class ProductoModel{
         }       
         
     }
-    static async deleteProductByRestaurant(id_rest)
+    static async deleteAllProductByRestaurant(id_rest)
     {   
         try {
 
