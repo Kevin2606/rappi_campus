@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const crearToken = async (req, res) => {
+    //TODO: General al crear un usuario o al loguearse; usuarios --> clientes, repartidores, restaurantes
     const encoder = new TextEncoder();
     const jwtConstructor = await new SignJWT({ id: id})
         .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
@@ -19,6 +20,7 @@ const validarToken = async (token) => {
             token,
             encoder.encode(process.env.JWT_SECRET)
         );
+        //TODO: Retornar el usuario que corresponde al token y agregar el rol del usuario a req.user.rol
     } catch (error) {
         return false;
     }
