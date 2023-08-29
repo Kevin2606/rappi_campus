@@ -14,8 +14,8 @@ configAuth();
 const app = express();
 app.use(express.json());
 
-app.use(passportConfig.initialize())
-app.use(passportHelper.authenticate('bearer', { session: false }), authorize)
+//app.use(passportConfig.initialize())
+//app.use(passportConfig.authenticate('bearer', { session: false }), authorize)
 app.use('/repartidores', repartidoresRouter);
 app.use('/pedidos', pedidosRouter)
 app.use('/restaurantes', restaurantesRouter);

@@ -2,15 +2,14 @@ import { SignJWT, jwtVerify } from "jose"
 import dotenv from 'dotenv';
 dotenv.config();
 
-const crearToken = async (req, res) => {
-    //TODO: General al crear un usuario o al loguearse; usuarios --> clientes, repartidores, restaurantes
+const crearToken = async (id, rol) => {
     const encoder = new TextEncoder();
-    const jwtConstructor = await new SignJWT({ id: id})
+    const jwtConstructor = await new SignJWT({ id, rol})
         .setProtectedHeader({ alg: 'HS256', typ: 'JWT' })
         .setIssuedAt()
         .setExpirationTime('1h')
         .sign(encoder.encode(process.env.JWT_SECRET));
-    res.send(jwtConstructor);
+    return jwtConstructor;
 }
 
 const validarToken = async (token) => {
