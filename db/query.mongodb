@@ -50,11 +50,10 @@ db.createCollection("clientes", {
         },
     },
 });
-db.clientes.createIndex({ id_cliente: 1 }, { unique: true })
-db.clientes.createIndex({ cedula: 1 }, { unique: true })
-db.clientes.createIndex({ correo: 1 }, { unique: true })
-db.clientes.createIndex({ numero_celular: 1 }, {unique: true})
-
+db.clientes.createIndex({ id_cliente: 1 }, { unique: true });
+db.clientes.createIndex({ cedula: 1 }, { unique: true });
+db.clientes.createIndex({ correo: 1 }, { unique: true });
+db.clientes.createIndex({ numero_celular: 1 }, { unique: true });
 
 //REPARTIDORES
 db.createCollection("repartidores", {
@@ -107,25 +106,25 @@ db.createCollection("repartidores", {
         },
     },
 });
-db.repartidores.createIndex({ id_repartidor: 1 }, { unique: true })
-db.repartidores.createIndex({ cedula: 1 }, { unique: true })
-db.repartidores.createIndex({ correo: 1 }, { unique: true })
-db.repartidores.createIndex({ numero_celular: 1 }, {unique: true})
+db.repartidores.createIndex({ id_repartidor: 1 }, { unique: true });
+db.repartidores.createIndex({ cedula: 1 }, { unique: true });
+db.repartidores.createIndex({ correo: 1 }, { unique: true });
+db.repartidores.createIndex({ numero_celular: 1 }, { unique: true });
 
 //PRODUCTOS
-db.createCollection("productos",{
+db.createCollection("productos", {
     validator: {
         $jsonSchema: {
             bsonType: "object",
             title: "productos",
             required: [
-                "_id",               
+                "_id",
                 "id_restaurante",
                 "nombre",
                 "valor_unitario",
                 "descripcion",
                 "foto_producto",
-                "stock"
+                "stock",
             ],
             properties: {
                 _id: { bsonType: "objectId" },
@@ -139,7 +138,7 @@ db.createCollection("productos",{
                     bsonType: "string",
                 },
                 valor_unitario: {
-                    bsonType: "int",
+                    bsonType: "decimal",
                 },
                 descripcion: {
                     bsonType: "string",
@@ -148,14 +147,14 @@ db.createCollection("productos",{
                     bsonType: "string",
                 },
                 stock: {
-                        bsonType: "int",
+                    bsonType: "int",
                 },
             },
             additionalProperties: false,
         },
     },
 });
-db.productos.createIndex({ id_producto: 1 }, { unique: true })
+db.productos.createIndex({ id_producto: 1 }, { unique: true });
 
 //PEDIDOS
 db.createCollection("pedidos", {
@@ -172,7 +171,7 @@ db.createCollection("pedidos", {
                 "productos",
                 "metodo_pago",
                 "valor_total",
-                "fecha_pedido"
+                "fecha_pedido",
             ],
             properties: {
                 _id: { bsonType: "objectId" },
@@ -192,10 +191,7 @@ db.createCollection("pedidos", {
                     bsonType: "array",
                     items: {
                         bsonType: "object",
-                        required: [
-                            "id_producto",
-                            "cantidad",
-                        ],
+                        required: ["id_producto", "cantidad"],
                         properties: {
                             id_producto: {
                                 bsonType: "int",
@@ -220,7 +216,7 @@ db.createCollection("pedidos", {
         },
     },
 });
-db.pedidos.createIndex({ id_pedido: 1 }, { unique: true })
+db.pedidos.createIndex({ id_pedido: 1 }, { unique: true });
 
 //RESTAURANTES
 db.createCollection("restaurantes", {
@@ -266,10 +262,10 @@ db.createCollection("restaurantes", {
         },
     },
 });
-db.restaurantes.createIndex({ id_restaurante: 1 }, { unique: true })
-db.restaurantes.createIndex({ correo: 1 }, { unique: true })
-db.restaurantes.createIndex({ numero_celular: 1 }, {unique: true})
-db.restaurantes.createIndex({ nombre: 1 }, {unique: true})
+db.restaurantes.createIndex({ id_restaurante: 1 }, { unique: true });
+db.restaurantes.createIndex({ correo: 1 }, { unique: true });
+db.restaurantes.createIndex({ numero_celular: 1 }, { unique: true });
+db.restaurantes.createIndex({ nombre: 1 }, { unique: true });
 
 //Documentos de prueba
 db.clientes.insertMany([
@@ -327,7 +323,8 @@ db.productos.insertMany([
         nombre: "Hamburguesa",
         valor_unitario: Decimal128("2000"),
         descripcion: "Hamburguesa con queso",
-        foto_producto: "https://assets.unileversolutions.com/recipes-v2/115358.jpg",
+        foto_producto:
+            "https://assets.unileversolutions.com/recipes-v2/115358.jpg",
         stock: 10,
     },
     {
@@ -336,7 +333,8 @@ db.productos.insertMany([
         nombre: "Pizza",
         valor_unitario: Decimal128("15000"),
         descripcion: "Pizza de peperoni",
-        foto_producto: "https://www.olivetto.com.co/wp-content/uploads/PizzaItalianaClasica-ImagenDestacada-1200x1800.jpg",
+        foto_producto:
+            "https://www.olivetto.com.co/wp-content/uploads/PizzaItalianaClasica-ImagenDestacada-1200x1800.jpg",
         stock: 10,
     },
 ]);
@@ -385,7 +383,8 @@ db.restaurantes.insertMany([
         numero_celular: "3000000004",
         correo: "restaurante1@gmail.com",
         horario_atencion: "Lunes a Viernes 8:00 am - 5:00 pm",
-        foto_restaurante: "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
+        foto_restaurante:
+            "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
     },
     {
         id_restaurante: 2,
@@ -394,8 +393,145 @@ db.restaurantes.insertMany([
         numero_celular: "3000000005",
         correo: "restaurante2@gmail.com",
         horario_atencion: "Lunes a Viernes 8:00 am - 5:00 pm",
-        foto_restaurante: "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
-    }
+        foto_restaurante:
+            "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
+    },
+]);
+
+db.createCollection("roles", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            title: "roles",
+            required: ["_id", "group", "permissions", "action"],
+            properties: {
+                _id: { bsonType: "objectId" },
+                group: {
+                    bsonType: "string",
+                },
+                permissions: {
+                    bsonType: "array",
+                    items: {
+                        bsonType: "object",
+                        required: ["resource", "methods", "action"],
+                        properties: {
+                            resource: {
+                                bsonType: "string",
+                            },
+                            methods: {
+                                bsonType: "array",
+                                items: {
+                                    bsonType: "string",
+                                },
+                            },
+                            action: {
+                                enum: ["allow", "deny"],
+                            },
+                        },
+                    },
+                },
+                action: {
+                    enum: ["allow", "deny"],
+                },
+            },
+            additionalProperties: false,
+        },
+    },
+});
+db.roles.insertMany([
+    {
+        group: "clientes",
+        permissions: [
+            {
+                resource: "clientes/*",
+                methods: ["POST", "GET", "PUT"],
+                action: "allow",
+            },
+            {
+                resource: "pedidos/*",
+                methods: ["POST", "GET", "PUT"],
+                action: "allow",
+            },
+            {
+                resource: "productos/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+            {
+                resource: "restaurantes/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+            {
+                resource: "repartidores/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+        ],
+        action: "deny",
+    },
+    {
+        group: "repartidores",
+        permissions: [
+            {
+                resource: "repartidores/*",
+                methods: ["POST", "GET", "PUT"],
+                action: "allow",
+            },
+            {
+                resource: "pedidos/",
+                methods: ["GET"],
+                action: "allow",
+            },
+            {
+                resource: "restaurantes/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+            {
+                resource: "productos/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+            {
+                resource: "clientes/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+        ],
+        action: "deny",
+    },
+    {
+        group: "restaurantes",
+        permissions: [
+            {
+                resource: "restaurantes/*",
+                methods: ["POST", "GET", "PUT"],
+                action: "allow",
+            },
+            {
+                resource: "pedidos/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+            {
+                resource: "productos/*",
+                methods: ["POST", "GET", "PUT"],
+                action: "allow",
+            },
+            {
+                resource: "clientes/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+            {
+                resource: "repartidores/*",
+                methods: ["GET"],
+                action: "allow",
+            },
+        ],
+        action: "deny",
+    },
 ]);
 
 //AUTOINCREMENTO

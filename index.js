@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.use((req, res, next) => {
     console.log(`Request ${req.method} ${req.url}`);
-    req.user = { rol : 'admin'}
+    req.user = { rol : 'restaurantes'}
     next();
 })
 app.use(authorize);
