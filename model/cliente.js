@@ -14,6 +14,14 @@ export default class ClienteModel{
             return { status: 400, message: "Usuario no encontrado" };
         }
     }
+    static async getClientByEmail(email){
+        try {
+            const getClient = await db.findOne({ correo: email });
+            return getClient
+        } catch (error) {
+            return { status: 400, message: "Usuario no encontrado" };
+        }
+    }
     static async getAllClient()
     {
         try {

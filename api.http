@@ -116,6 +116,15 @@ DELETE http://localhost:3000/restaurantes/11
 
 ### CLIENTES ---------------------------------------------------------------------------------------------
 
+### Login Cliente
+POST http://localhost:3000/clientes/login
+Content-Type: application/json
+
+{
+    "correo": "juanperez@gmail.com",
+    "contrasena": "123456"
+}
+
 ### Obtiene todos los clientes
 GET http://localhost:3000/clientes/getAllClient
 
