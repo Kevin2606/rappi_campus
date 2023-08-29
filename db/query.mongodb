@@ -10,6 +10,7 @@ db.createCollection("clientes", {
                 "nombre",
                 "apellido",
                 "correo",
+                "contrasena",
                 "direccion_entrega",
                 "numero_celular",
                 "cedula",
@@ -28,6 +29,9 @@ db.createCollection("clientes", {
                     bsonType: "string",
                 },
                 correo: {
+                    bsonType: "string",
+                },
+                contrasena: {
                     bsonType: "string",
                 },
                 direccion_entrega: {
@@ -66,6 +70,7 @@ db.createCollection("repartidores", {
                 "nombre",
                 "apellido",
                 "correo",
+                "contrasena",
                 "numero_celular",
                 "cedula",
                 "fecha_nacimiento",
@@ -84,6 +89,9 @@ db.createCollection("repartidores", {
                     bsonType: "string",
                 },
                 correo: {
+                    bsonType: "string",
+                },
+                contrasena: {
                     bsonType: "string",
                 },
                 numero_celular: {
@@ -231,6 +239,7 @@ db.createCollection("restaurantes", {
                 "direccion",
                 "numero_celular",
                 "correo",
+                "contrasena",
                 "horario_atencion",
                 "foto_restaurante",
             ],
@@ -249,6 +258,9 @@ db.createCollection("restaurantes", {
                     bsonType: "string",
                 },
                 correo: {
+                    bsonType: "string",
+                },
+                contrasena: {
                     bsonType: "string",
                 },
                 horario_atencion: {
@@ -274,6 +286,7 @@ db.clientes.insertMany([
         nombre: "Juan",
         apellido: "Perez",
         correo: "juanperez@gmail.com",
+        contrasena: "123456",
         direccion_entrega: "Calle 1 # 1-1",
         numero_celular: "3000000000",
         cedula: "123456789",
@@ -285,6 +298,7 @@ db.clientes.insertMany([
         nombre: "Maria",
         apellido: "Gomez",
         correo: "mariagomez@gmail.com",
+        contrasena: "123456",
         direccion_entrega: "Calle 2 # 2-2",
         numero_celular: "3000000001",
         cedula: "123456780",
@@ -298,6 +312,7 @@ db.repartidores.insertMany([
         nombre: "Pedro",
         apellido: "Gomez",
         correo: "pedrogomez@gmail.com",
+        contrasena: "123456",
         numero_celular: "3000000002",
         cedula: "123456781",
         fecha_nacimiento: "1990-01-03",
@@ -309,6 +324,7 @@ db.repartidores.insertMany([
         nombre: "Luis",
         apellido: "Gomez",
         correo: "luisgomez@gmail.com",
+        contrasena: "123456",
         numero_celular: "3000000003",
         cedula: "123456782",
         fecha_nacimiento: "1990-01-04",
@@ -382,6 +398,7 @@ db.restaurantes.insertMany([
         direccion: "Calle 1 # 1-1",
         numero_celular: "3000000004",
         correo: "restaurante1@gmail.com",
+        contrasena: "123456",
         horario_atencion: "Lunes a Viernes 8:00 am - 5:00 pm",
         foto_restaurante:
             "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
@@ -392,6 +409,7 @@ db.restaurantes.insertMany([
         direccion: "Calle 2 # 2-2",
         numero_celular: "3000000005",
         correo: "restaurante2@gmail.com",
+        contrasena: "123456",
         horario_atencion: "Lunes a Viernes 8:00 am - 5:00 pm",
         foto_restaurante:
             "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
