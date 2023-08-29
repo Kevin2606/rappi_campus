@@ -5,6 +5,7 @@ import pedidosRouter from './routes/pedidos.js';
 import restaurantesRouter from './routes/restaurantes.js';
 import clientesRouter from './routes/clientes.js';
 import productosRouter from './routes/productos.js';
+import passportConfig from './config/passportConfig.js';
 import { config as configAuth, authorize } from './config/auth.js';
 
 dotenv.config();
@@ -13,12 +14,8 @@ configAuth();
 const app = express();
 app.use(express.json());
 
-app.use((req, res, next) => {
-    console.log(`Request ${req.method} ${req.url}`);
-    req.user = { rol : 'restaurantes'}
-    next();
-})
-app.use(authorize);
+app.use(passportConfig.initialize())
+app.use(passportHelper.authenticate('bearer', { session: false }), authorize)
 app.use('/repartidores', repartidoresRouter);
 app.use('/pedidos', pedidosRouter)
 app.use('/restaurantes', restaurantesRouter);
