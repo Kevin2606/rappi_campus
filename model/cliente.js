@@ -8,7 +8,7 @@ export default class ClienteModel{
     static async getClient(id)
     {
         try {
-            const getClient=await db.findOne({ id_cliente: id });
+            const getClient=await db.findOne({ id: id });
             return getClient
         } catch (error) {
             return { status: 400, message: "Usuario no encontrado" };
@@ -35,7 +35,7 @@ export default class ClienteModel{
     static async createClient(cliente)
     {
         try {
-            cliente.id_cliente = await getNextSequenceValue("clientes");
+            cliente.id = await getNextSequenceValue("clientes");
             return await db.insertOne(cliente);
         } catch (error) {
             console.log(error);
@@ -53,7 +53,7 @@ export default class ClienteModel{
     {   
         try {
 
-            const removeClient= await db.deleteOne({id_cliente:id})
+            const removeClient= await db.deleteOne({id:id})
             console.log("Cliente eliminado correctamente");
             return removeClient   
         } 
@@ -70,7 +70,7 @@ export default class ClienteModel{
         try {
             const query={}
             const updateClient= await db.updateOne(
-                {id_cliente:id},
+                {id:id},
                 {$set:dataUpdateClient}
                 );
             console.log("Datos actualizados correctamente");

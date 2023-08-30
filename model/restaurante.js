@@ -14,7 +14,7 @@ export default class RestauranteModel {
 
     static async obtenerRestaurante(id) {
         try {
-            return await db.findOne({ id_restaurante: id });
+            return await db.findOne({ id: id });
         } catch (error) {
             return { status: 400, message: error.message };
         }
@@ -22,7 +22,7 @@ export default class RestauranteModel {
 
     static async crearRestaurante(restaurante) {
         try {
-            restaurante.id_restaurante = await getNextSequenceValue("restaurantes");
+            restaurante.id = await getNextSequenceValue("restaurantes");
             return await db.insertOne(restaurante);
         } catch (error) {
             if (error.code === 11000)
@@ -37,7 +37,7 @@ export default class RestauranteModel {
     static async actualizarRestaurante(id, restaurante) {
         try {
             return await db.updateOne(
-                { id_restaurante: id },
+                { id: id },
                 { $set: restaurante }
             );
         } catch (error) {
@@ -52,7 +52,7 @@ export default class RestauranteModel {
 
     static async eliminarRestaurante(id) {
         try {
-            return await db.deleteOne({ id_restaurante: id });
+            return await db.deleteOne({ id: id });
         } catch (error) {
             return { status: 400, message: error.message };
         }

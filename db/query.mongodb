@@ -497,7 +497,7 @@ db.roles.insertMany([
                 action: "allow",
             },
             {
-                resource: "pedidos/",
+                resource: "pedidos/*",
                 methods: ["GET"],
                 action: "allow",
             },

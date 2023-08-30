@@ -14,7 +14,8 @@ export default class RepartidorModel {
 
     static async obtenerRepartidor(id) {
         try {
-            return await db.findOne({ id_repartidor: id });
+            
+            return await db.findOne({ id: id });
         } catch (error) {
             return { status: 400, message: error.message };
         }
@@ -22,7 +23,7 @@ export default class RepartidorModel {
 
     static async crearRepartidor(repartidor) {
         try {
-            repartidor.id_repartidor = await getNextSequenceValue("repartidores");
+            repartidor.id = await getNextSequenceValue("repartidores");
             return await db.insertOne(repartidor);
         } catch (error) {
             if (error.code === 11000)
@@ -37,7 +38,7 @@ export default class RepartidorModel {
     static async actualizarRepartidor(id, repartidor) {
         try {
             return await db.updateOne(
-                { id_repartidor: id },
+                { id: id },
                 { $set: repartidor }
             );
         } catch (error) {
@@ -52,7 +53,7 @@ export default class RepartidorModel {
 
     static async eliminarRepartidor(id) {
         try {
-            return await db.deleteOne({ id_repartidor: id });
+            return await db.deleteOne({ id: id });
         } catch (error) {
             return { status: 400, message: error.message };
         }
