@@ -1,5 +1,8 @@
 import { SignJWT, jwtVerify } from "jose"
 import dotenv from 'dotenv';
+import connect from "../db/connectDB.js";
+const db = (await connect())
+
 dotenv.config();
 
 const crearToken = async (id, rol) => {
@@ -15,11 +18,15 @@ const crearToken = async (id, rol) => {
 const validarToken = async (token) => {
     try {
         const encoder = new TextEncoder();
-        const jwtData = await jwtVerify(
+        const { id, rol } = await jwtVerify(
             token,
             encoder.encode(process.env.JWT_SECRET)
         );
-        //TODO: Retornar el usuario que corresponde al token y agregar el rol del usuario a req.user.rol
+        const con = db.collection(rol);
+        const getUser = await con.findOne({ id });
+        if (!getUser) return false;
+        getUser.rol = rol;
+        return getUser;
     } catch (error) {
         return false;
     }
