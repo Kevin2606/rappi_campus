@@ -1,6 +1,32 @@
 import RepartidorModel from '../model/repartidor.js';
+import { crearToken } from "../middleware/jwt.js";
+import { login, register } from "../helper/auth.js";
 
 export default class RepartidorController {
+    static async loginRepartidor(req, res) {
+        try {
+            const user = await login(req.body, "repartidores");
+            if (!user)
+                throw { status: 400, message: "Usuario no encontrado" };
+            const token = await crearToken(user.id_repartidor, "repartidores");
+            res.status(200).json({ token });
+        } catch (error) {
+            res.status(error.status).json({ message: error.message });
+        }
+    }
+
+    static async registerRepartidor(req, res) {
+        try {
+            const user = await register(req.body, "repartidores");
+            if (user.status === 400)
+                throw { status: 400, message: user.message };
+            const token = await crearToken(user.id_repartidor, "repartidores");
+            res.status(200).json({ token });
+        } catch (error) {
+            res.status(error.status).json({ message: error.message });
+        }
+    }
+
     static async obtenerRepartidores(req, res) {
         try {
             const repartidores = await RepartidorModel.obtenerRepartidores();

@@ -1,8 +1,32 @@
 import ClienteModel from "../model/cliente.js"
-//import bcrypt from "bcrypt";
 import { crearToken } from "../middleware/jwt.js";
+import { login, register } from "../helper/auth.js";
 
 export default class ClienteController {
+    static async loginClient(req,res){
+        try {
+            const user = await login(req.body, "clientes");
+            if (!user)
+                throw { status: 400, message: "Usuario no encontrado" };
+            const token = await crearToken(user.id_cliente, "clientes");
+            res.status(200).json({ token });
+        } catch (error) {
+            res.status(error.status).json({ message: error.message });
+        }
+    }
+
+    static async registerClient(req,res){
+        try {
+            const user = await register(req.body, "clientes");
+            if (user.status === 400)
+                throw { status: 400, message: user.message };
+            const token = await crearToken(user.id_cliente, "clientes");
+            res.status(200).json({ token });
+        } catch (error) {
+            res.status(error.status).json({ message: error.message });
+        }
+    }
+
     static async getClient(req,res){
 
         try {
@@ -12,24 +36,6 @@ export default class ClienteController {
         } catch (error) {
             res.status(error.status).json({message: error.message})
         }
-    }
-    static async loginClient(req,res){
-            try {
-                const { body } = req;
-                if (!body.correo || !body.contrasena)
-                    throw { status: 400, message: "Faltan datos" };
-                const cliente = await ClienteModel.getClientByEmail(body.correo)
-                if (!cliente)
-                    throw { status: 400, message: "Usuario no encontrado" };
-                //const valid = await bcrypt.compare(body.contrasena, cliente.contrasena);
-                const valid = body.contrasena === cliente.contrasena;
-                if (!valid)
-                    throw { status: 400, message: "Contraseña incorrecta" };
-                const token = await crearToken(cliente.id_cliente, "clientes")
-                res.status(200).json({ token });
-            } catch (error) {
-                res.status(error.status).json({message: error.message})
-            }
     }
 
     static async getAllClient(req,res){
