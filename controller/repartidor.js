@@ -8,7 +8,7 @@ export default class RepartidorController {
             const user = await login(req.body, "repartidores");
             if (!user)
                 throw { status: 400, message: "Usuario no encontrado" };
-            const token = await crearToken(user.id_repartidor, "repartidores");
+            const token = await crearToken(user._id.toString(), "repartidores");
             res.status(200).json({ token });
         } catch (error) {
             res.status(error.status).json({ message: error.message });
@@ -20,7 +20,7 @@ export default class RepartidorController {
             const user = await register(req.body, "repartidores");
             if (user.status === 400)
                 throw { status: 400, message: user.message };
-            const token = await crearToken(user.id_repartidor, "repartidores");
+            const token = await crearToken(user.insertedId.toString(), "repartidores");
             res.status(200).json({ token });
         } catch (error) {
             res.status(error.status).json({ message: error.message });
