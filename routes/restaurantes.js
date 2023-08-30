@@ -8,6 +8,6 @@ router
 .get('/:id', RestauranteController.obtenerRestaurante)
 .post('/', RestauranteController.crearRestaurante)
 .put('/:id', RestauranteController.actualizarRestaurante)
-.delete('/:id', RestauranteController.eliminarRestaurante);
+.delete('/:id', RestauranteController.eliminarRestaurante)
 
 export default router;

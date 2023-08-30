@@ -14,7 +14,7 @@ export default class RestauranteModel {
 
     static async obtenerRestaurante(id) {
         try {
-            const getRestaurantes= await db.findOne({ id_restaurante: id });
+            const getRestaurantes= await db.findOne({ id: id });
             if(!getRestaurantes)
             {   
                 console.log("Restaurante no encontrado")
@@ -28,7 +28,7 @@ export default class RestauranteModel {
 
     static async crearRestaurante(restaurante) {
         try {
-            //restaurante.id_restaurante = await getNextSequenceValue("restaurantes");
+            restaurante.id = await getNextSequenceValue("restaurantes");
             return await db.insertOne(restaurante);
         } catch (error) {
             return Promise.reject(error);
@@ -38,7 +38,7 @@ export default class RestauranteModel {
     static async actualizarRestaurante(id, restaurante) {
         try {
             const updateRestaurante= await db.updateOne(
-                { id_restaurante: id },
+                { id: id },
                 { $set: restaurante }
             );
             if(updateRestaurante.acknowledged && updateRestaurante.matchedCount>0)
@@ -54,7 +54,7 @@ export default class RestauranteModel {
 
     static async eliminarRestaurante(id) {
         try {
-            const removeRestaurante= await db.deleteOne({ id_restaurante: id });
+            const removeRestaurante= await db.deleteOne({ id: id });
             if(removeRestaurante.acknowledged && removeRestaurante.deletedCount>0)
             {
                 console.log("Cliente eliminado correctamente");

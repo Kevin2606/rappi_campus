@@ -1,15 +1,47 @@
 ### Rappi_Campus - Prueba de Endpoinst
 ### REPARTIDORES ---------------------------------------------------------------------------------------------
+### Register Repartidor
+POST http://localhost:3000/auth/repartidores/register
+Content-Type: application/json
+
+{
+    "nombre": "Luis",
+    "contrasena": "123456",
+    "apellido": "Gomez",
+    "correo": "luis_gomez@gmail.com",
+    "numero_celular": "3001234567",
+    "cedula": "33333",
+    "fecha_nacimiento": "1990-01-01",
+    "sexo": "M",
+    "tipo_vehiculo": "Carro"
+}
+
+### Login Repartidor
+POST http://localhost:3000/auth/repartidores/login
+Content-Type: application/json
+
+{
+    "correo": "luis_gomez@gmail.com",
+    "contrasena": "123456"
+}
 
 ### Obtiene todos los repartidores
 GET http://localhost:3000/repartidores
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 ### Obtener repartidor por id
-GET http://localhost:3000/repartidores/1
+GET http://localhost:3000/repartidores/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 ### Obtener repartidor por cedula
 GET http://localhost:3000/repartidores/cedula/123456781
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 ### Obtener repartidor por correo
 GET http://localhost:3000/repartidores/correo/luisgomez@gmail.com
-### Crear repartidor
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
+### Crear repartidor --- ELIMINAR 
 POST http://localhost:3000/repartidores
 Content-Type: application/json
 
@@ -24,7 +56,7 @@ Content-Type: application/json
     "sexo": "M",
     "tipo_vehiculo": "Carro"
 }
-### Actualizar repartidor
+### Actualizar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ACTUALIZAR SU INFORMACION
 PUT http://localhost:3000/repartidores/4
 Content-Type: application/json
 
@@ -33,23 +65,35 @@ Content-Type: application/json
     "correo": "luis_fernando@gmail.com"
 }
 
-### Eliminar repartidor
+### Eliminar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ELIMINAR SU INFORMACION
 DELETE http://localhost:3000/repartidores/4
 
 ### PEDIDOS         ---------------------------------------------------------------------------------------------
 
-### Obtiene todos los pedidos
+### Obtiene todos los pedidos - con token de Repartidor
 GET http://localhost:3000/pedidos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 ### Obtener pedido por id
-GET http://localhost:3000/pedidos/2
+GET http://localhost:3000/pedidos/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 ### Obtener pedidos por id de cliente
 GET http://localhost:3000/pedidos/cliente/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 ### Obtener pedidos por id de repartidor
 GET http://localhost:3000/pedidos/repartidor/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 ### Obtener pedidos por id de restaurante
 GET http://localhost:3000/pedidos/restaurante/1
-### Crear pedido
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
+### Crear pedido - SOLO CON TOKEN DE CLIENTE
 POST http://localhost:3000/pedidos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {
@@ -71,8 +115,10 @@ Content-Type: application/json
     "fecha_pedido": "2023-08-25"
 }
 
-### Actualizar pedido
+### Actualizar pedido -- SOLO CON TOKEN DE CLIENTE
 PUT http://localhost:3000/pedidos/19
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {
@@ -81,16 +127,23 @@ Content-Type: application/json
 }
 
 ### Eliminar pedido
-DELETE http://localhost:3000/pedidos/19
+DELETE http://localhost:3000/pedidos/19 -- SOLO CON TOKEN DE CLIENTES
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 
 ### RESTAURANTES                ---------------------------------------------------------------------------------------------
 
 ### Obtiene todos los restaurantes
 GET http://localhost:3000/restaurantes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 ### Obtener restaurante por id
-GET http://localhost:3000/restaurantes/11
-### Crear restaurante
-POST http://localhost:3000/restaurantes
+GET http://localhost:3000/restaurantes/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
+### Crear restaurante -- SOLO CON TOKEN DE RESTAURANTE
+POST http://localhost:3000/restaurantes 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {
@@ -103,7 +156,9 @@ Content-Type: application/json
 }
 
 ### Actualizar restaurante
-PUT http://localhost:3000/restaurantes/11
+PUT http://localhost:3000/restaurantes/11 -- SOLO CON TOKEN DE RESTAURANTE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {
@@ -111,19 +166,51 @@ Content-Type: application/json
 }
 
 ### Eliminar restaurante
-DELETE http://localhost:3000/restaurantes/11
+DELETE http://localhost:3000/restaurantes/11 -- SOLO CON TOKEN DE RESTAURANTE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 
 
 ### CLIENTES ---------------------------------------------------------------------------------------------
 
+### Register Cliente
+POST http://localhost:3000/auth/clientes/register 
+Content-Type: application/json
+
+{
+    "nombre": "Gerson",
+    "apellido": "Hernández",
+    "correo": "gersonhdz@gmail.com",
+    "direccion_entrega": "Calle 26a # 11-30",
+    "numero_celular": "3122341234",
+    "cedula": "1096243865",
+    "fecha_nacimiento": "1998-10-20",
+    "sexo": "M",
+    "contrasena": "123456"
+}
+
+### Login Cliente
+POST http://localhost:3000/auth/clientes/login
+Content-Type: application/json
+
+{
+    "correo": "gersonhdz@gmail.com",
+    "contrasena": "123456"
+}
+
 ### Obtiene todos los clientes
 GET http://localhost:3000/clientes/getAllClient
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVkZGExZTNhZjFjZjhkNmVmZDcxYyIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzMzc1OTg1LCJleHAiOjE2OTMzNzk1ODV9.ClfTwdLHY9uoAmwljSVWoYSgU-q_eYTPq3Ll-5WqcZ8;
 
 ### Obtener clientes por id
-GET http://localhost:3000/clientes/getClient/3
+
+GET http://localhost:3000/clientes/getClient/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
 ### Crear cliente
 POST http://localhost:3000/clientes/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {   "id_cliente":3,   
@@ -137,7 +224,10 @@ Content-Type: application/json
     "sexo": "M"
 }
 ### Actualizar Cliente
-PUT http://localhost:3000/clientes/update/3
+
+PUT http://localhost:3000/clientes/update/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {
@@ -146,22 +236,33 @@ Content-Type: application/json
 }
 
 ### Eliminar Cliente
-DELETE http://localhost:3000/clientes/delete/5
+
+DELETE http://localhost:3000/clientes/delete/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 
 
 ### PRODUCTOS ---------------------------------------------------------------------------------------------
 
 ### Obtiene todos los oroductos
 GET http://localhost:3000/productos/getAllProduct
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 
 ### Obtener productos por id
 GET http://localhost:3000/productos/getProduct/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 
 ### Obtener productos por id de restaurante
 GET http://localhost:3000/productos/getProductByRestaurant/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 
 ### Crear producto
 POST http://localhost:3000/productos/create
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {
@@ -174,6 +275,8 @@ Content-Type: application/json
 }
 ### Actualizar Producto por id
 PUT http://localhost:3000/productos/update/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 Content-Type: application/json
 
 {
@@ -186,6 +289,9 @@ Content-Type: application/json
 
 ### Eliminar Producto por id 
 DELETE http://localhost:3000/productos/delete/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
 
 ### Eliminar todos los productos de un restaurent por id de restaurante
 DELETE http://localhost:3000/productos/deleteByRestaurant/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;

@@ -14,7 +14,7 @@ export default class RepartidorModel {
 
     static async obtenerRepartidor(id) {
         try {
-            const repartidor= await db.findOne({ id_repartidor: id });
+            const repartidor= await db.findOne({ id: id });
             if(!repartidor)
             {   
                 console.log("Repartidor no encontrado")
@@ -28,7 +28,7 @@ export default class RepartidorModel {
 
     static async crearRepartidor(repartidor) {
         try {
-            //repartidor.id_repartidor = await getNextSequenceValue("repartidores");
+            repartidor.id = await getNextSequenceValue("repartidores");
             return await db.insertOne(repartidor);
         } catch (error) {
             return Promise.reject(error);
@@ -38,7 +38,7 @@ export default class RepartidorModel {
     static async actualizarRepartidor(id, repartidor) {
         try {
             const updateRepartidor=await db.updateOne(
-                { id_repartidor: id },
+                { id: id },
                 { $set: repartidor }
             );
             if(updateRepartidor.acknowledged && updateRepartidor.matchedCount>0)
@@ -54,14 +54,13 @@ export default class RepartidorModel {
 
     static async eliminarRepartidor(id) {
         try {
-            const removeRepartidor= await db.deleteOne({ id_repartidor: id });
+            const removeRepartidor= await db.deleteOne({ id: id });
             if(removeRepartidor.acknowledged && removeRepartidor.deletedCount>0)
             {
                 console.log("Cliente eliminado correctamente");
                 return  {status:400, message: "Cliente eliminado Correctamente"} 
             }
             return removeRepartidor
-            
         } catch (error) {
             return Promise.reject(error);
         }

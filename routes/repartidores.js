@@ -10,6 +10,6 @@ router
 .get('/:id', RepartidorController.obtenerRepartidor)
 .post('/', RepartidorController.crearRepartidor)
 .put('/:id', RepartidorController.actualizarRepartidor)
-.delete('/:id', RepartidorController.eliminarRepartidor);
+.delete('/:id', RepartidorController.eliminarRepartidor)
 
 export default router;
