@@ -42,6 +42,14 @@ export default (err, req, res, next) => {
                 }
             }   
         }
-        res.status(400).json({ status: 400, errMsg });
-    }    
+        else
+        {
+            errMsg.push(err)
+            res.status(400).json({ status: 400, errMsg }); 
+        }
+        
+        
+    }
+    errMsg.push(err)
+    res.status(400).json({ status: 400, errMsg });    
 }

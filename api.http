@@ -146,7 +146,7 @@ Content-Type: application/json
 }
 
 ### Eliminar Cliente
-DELETE http://localhost:3000/clientes/delete/2
+DELETE http://localhost:3000/clientes/delete/5
 
 
 ### PRODUCTOS ---------------------------------------------------------------------------------------------
