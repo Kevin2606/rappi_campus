@@ -120,30 +120,29 @@ DELETE http://localhost:3000/restaurantes/11
 GET http://localhost:3000/clientes/getAllClient
 
 ### Obtener clientes por id
-GET http://localhost:3000/clientes/getClient/2
+GET http://localhost:3000/clientes/getClient/3
 
 ### Crear cliente
 POST http://localhost:3000/clientes/create
 Content-Type: application/json
 
-{
-
-    "nombre": "Gerson",
-    "apellido": "Hernández",
-    "correo": "gersonhdz@gmail.com",
+{   "id_cliente":3,   
+    "nombre":"Gerson",
+    "apellido":"Hernandez",
+    "correo": "gersonhdz4@gmail.com",
     "direccion_entrega": "Calle 26a # 11-30",
-    "numero_celular": "3122341234",
-    "cedula": "1096243865",
+    "numero_celular": "31223412344",
+    "cedula": "10962438654",
     "fecha_nacimiento": "1998-10-20",
     "sexo": "M"
 }
 ### Actualizar Cliente
-PUT http://localhost:3000/clientes/update/2
+PUT http://localhost:3000/clientes/update/3
 Content-Type: application/json
 
 {
     "apellido": "Olave",
-    "correo": "gersonhddddd@gmail.com"
+    "correo": "gersonhdz4@gmail.com"
 }
 
 ### Eliminar Cliente

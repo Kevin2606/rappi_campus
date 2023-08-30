@@ -9,9 +9,13 @@ export default class ClienteModel{
     {
         try {
             const getClient=await db.findOne({ id_cliente: id });
+            if(!getClient)
+            {
+                return {status:400, message: "Usuario no encontrado"}
+            }
             return getClient
         } catch (error) {
-            return { status: 400, message: "Usuario no encontrado" };
+            return Promise.reject(error);
         }
     }
     static async getAllClient()
@@ -20,25 +24,17 @@ export default class ClienteModel{
             const getClients=await db.find().toArray();
             return getClients
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
         
     }
     static async createClient(cliente)
     {
         try {
-            cliente.id_cliente = await getNextSequenceValue("clientes");
-            return await db.insertOne(cliente);
+            return await db.insertOne(cliente); 
         } catch (error) {
-            console.log(error);
-            if (error.code === 11000)
-                return {
-                    status: 400,
-                    message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-                };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error);
         }
-        
         
     }
     static async deleteClient(id)
@@ -52,25 +48,27 @@ export default class ClienteModel{
         catch (error) {
 
             console.log(error.message);            
-            return { status: 400, message: "Error al eliminar el usuario" };  
+            return Promise.reject(error); 
             
         }       
         
     }
     static async updateClient(id,dataUpdateClient)
     {
-        try {
-            const query={}
+        try {            
             const updateClient= await db.updateOne(
                 {id_cliente:id},
                 {$set:dataUpdateClient}
                 );
-            console.log("Datos actualizados correctamente");
-            return updateClient   
+            if(updateClient.acknowledged && updateClient.matchedCount>0)
+            {
+                console.log("Datos actualizados correctamente");
+                return {status:400, message:"Datos actualizados correctamente" }
+            }
         } 
         catch (error) {
             
-            return { status: 400, message: "Error al actualizar el usuario" };  
+            return Promise.reject(error); 
             
         } 
         
