@@ -1,15 +1,15 @@
 import bcrypt from "bcrypt";
-import AuthModel from "../model/auth";
+import AuthModel from "../model/auth.js";
 
 
-const login = async ({email, password}, collection) => {
+const login = async ({correo, contrasena}, collection) => {
     try {
-        if (!email || !password)
+        if (!correo || !contrasena)
             throw { status: 400, message: "Faltan datos" };
-        const user = await AuthModel.login(email, collection);
+        const user = await AuthModel.login(correo, collection);
         if (!user)
             throw { status: 400, message: "Usuario no encontrado" };
-        const valid = await bcrypt.compare(password, user.password);
+        const valid = await bcrypt.compare(contrasena, user.contrasena);
         if (!valid)
             throw { status: 400, message: "Contraseña incorrecta" };
         return user;
@@ -20,9 +20,9 @@ const login = async ({email, password}, collection) => {
 
 const register = async (body, collection) => {
     try {
-        if (!body.email || !body.password)
+        if (!body.correo || !body.contrasena)
             throw { status: 400, message: "Faltan datos" };
-        body.password = await bcrypt.hash(body.password, 10);
+        body.contrasena = await bcrypt.hash(body.contrasena, 10);
         const user = await AuthModel.register(body, collection);
         return user;
     } catch (error) {
