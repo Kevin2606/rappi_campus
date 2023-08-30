@@ -9,17 +9,14 @@ export default class ClienteModel{
     {
         try {
             const getClient=await db.findOne({ id: id });
+            if(!getClient)
+            {   
+                console.log("Usuario no encontrado")
+                return {status:400, message: "Usuario no encontrado"}
+            }
             return getClient
         } catch (error) {
-            return { status: 400, message: "Usuario no encontrado" };
-        }
-    }
-    static async getClientByEmail(email){
-        try {
-            const getClient = await db.findOne({ correo: email });
-            return getClient
-        } catch (error) {
-            return { status: 400, message: "Usuario no encontrado" };
+            return Promise.reject(error);
         }
     }
     static async getAllClient()
@@ -28,7 +25,7 @@ export default class ClienteModel{
             const getClients=await db.find().toArray();
             return getClients
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
         
     }
@@ -38,47 +35,47 @@ export default class ClienteModel{
             cliente.id = await getNextSequenceValue("clientes");
             return await db.insertOne(cliente);
         } catch (error) {
-            console.log(error);
-            if (error.code === 11000)
-                return {
-                    status: 400,
-                    message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-                };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error);
         }
-        
         
     }
     static async deleteClient(id)
     {   
         try {
-
             const removeClient= await db.deleteOne({id:id})
-            console.log("Cliente eliminado correctamente");
-            return removeClient   
+            if(removeClient.acknowledged && removeClient.deletedCount>0)
+            {
+                console.log("Cliente eliminado correctamente");
+                return  {status:400, message: "Cliente eliminado Correctamente"} 
+            }
+            return getClient
         } 
         catch (error) {
 
             console.log(error.message);            
-            return { status: 400, message: "Error al eliminar el usuario" };  
+            return Promise.reject(error); 
             
         }       
         
     }
     static async updateClient(id,dataUpdateClient)
     {
-        try {
-            const query={}
+        try {            
             const updateClient= await db.updateOne(
                 {id:id},
                 {$set:dataUpdateClient}
                 );
-            console.log("Datos actualizados correctamente");
-            return updateClient   
+
+            if(updateClient.acknowledged && updateClient.matchedCount>0)
+            {
+                console.log("Datos actualizados correctamente");
+                return {status:400, message:"Datos actualizados correctamente" }
+            }
+            return updateClient
         } 
         catch (error) {
             
-            return { status: 400, message: "Error al actualizar el usuario" };  
+            return Promise.reject(error); 
             
         } 
         

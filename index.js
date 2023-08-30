@@ -8,6 +8,7 @@ import productosRouter from './routes/productos.js';
 import authRouter from './routes/auth.js';
 import passportConfig from './config/passportConfig.js';
 import { config as configAuth, authorize } from './config/auth.js';
+import errorHandler from "./utils/errorHandler.js";
 
 dotenv.config();
 configAuth();
@@ -23,6 +24,8 @@ app.use('/pedidos', pedidosRouter)
 app.use('/restaurantes', restaurantesRouter);
 app.use('/clientes', clientesRouter);
 app.use('/productos', productosRouter);
+
+app.use(errorHandler);
 
 app.listen(process.env.PORT, () => {
     console.log(`Listening on http://localhost:${process.env.PORT}`);

@@ -9,7 +9,13 @@ export default class ProductoModel{
     {
         try {
             const getProduct=await db.findOne({ id_producto: id });
+            if(!getProduct)
+            {   
+                console.log("Restaurante no encontrado")
+                return {status:400, message: "Restaurante no encontrado"}
+            }
             return getProduct
+            
         } catch (error) {
             return { status: 400, message: "Producto no encontrado" };
         }
@@ -20,7 +26,7 @@ export default class ProductoModel{
             const getAllProduct=await db.find().toArray();
             return getAllProduct
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
         
     }
@@ -45,11 +51,16 @@ export default class ProductoModel{
                     ]        
                 }    
                 ]).toArray();
-            return products    
+                if(!products)
+                {   
+                    console.log("Restaurante no encontrado")
+                    return {status:400, message: "Restaurante no encontrado"}
+                }
+            return products 
         }
         catch(error)
         {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
 
 
@@ -57,16 +68,10 @@ export default class ProductoModel{
     static async createProduct(producto)
     {
         try {
-            producto.id_producto = await getNextSequenceValue("productos");
+            //producto.id_producto = await getNextSequenceValue("productos");
             return await db.insertOne(producto);
         } catch (error) {
-            console.log(error.errInfo.details.schemaRulesNotSatisfied[0].propertiesNotSatisfied[0]);
-            if (error.code === 11000)
-                return {
-                    status: 400,
-                    message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-                };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error);
         }
         
         
@@ -76,14 +81,15 @@ export default class ProductoModel{
         try {
 
             const removeProduct= await db.deleteOne({id_producto:id})
-            console.log("Producto eliminado correctamente");
-            return removeProduct   
+            if(removeProduct.acknowledged && removeProduct.deletedCount>0)
+            {
+                console.log("Producto eliminado correctamente");
+                return  {status:400, message: "Prodcuto eliminado Correctamente"} 
+            }
+            return removeProduct
         } 
         catch (error) {
-
-            console.log(error.message);            
-            return { status: 400, message: "Error al eliminar el producto" };  
-            
+            return Promise.reject(error);           
         }       
         
     }
@@ -92,14 +98,15 @@ export default class ProductoModel{
         try {
 
             const removeProduct= await db.remove({id_restaurante:id_rest})
-            console.log("Productos eliminados correctamente");
-            return removeProduct   
+            if(removeProduct.acknowledged && removeProduct.deletedCount>0)
+            {
+                console.log("Productos eliminados correctamente");
+                return  {status:400, message: "Prodcutos eliminados Correctamente"} 
+            }
+            return removeProduct
         } 
         catch (error) {
-
-            console.log(error.message);            
-            return { status: 400, message: "Error al eliminar los productos." };  
-            
+            return Promise.reject(error);           
         }       
         
     }
@@ -113,10 +120,8 @@ export default class ProductoModel{
             console.log("Datos actualizados correctamente");
             return updateProduct   
         } 
-        catch (error) {
-            
-            return { status: 400, message: "Error al actualizar el producto." };  
-            
+        catch (error) {            
+            return Promise.reject(error);           
         } 
         
     }

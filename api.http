@@ -203,9 +203,9 @@ GET http://localhost:3000/clientes/getAllClient
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVkZGExZTNhZjFjZjhkNmVmZDcxYyIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzMzc1OTg1LCJleHAiOjE2OTMzNzk1ODV9.ClfTwdLHY9uoAmwljSVWoYSgU-q_eYTPq3Ll-5WqcZ8;
 
 ### Obtener clientes por id
+
 GET http://localhost:3000/clientes/getClient/2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
-
 
 ### Crear cliente
 POST http://localhost:3000/clientes/create
@@ -213,18 +213,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M
 
 Content-Type: application/json
 
-{
-
-    "nombre": "Gerson",
-    "apellido": "Hernández",
-    "correo": "gersonhdz@gmail.com",
+{   "id_cliente":3,   
+    "nombre":"Gerson",
+    "apellido":"Hernandez",
+    "correo": "gersonhdz4@gmail.com",
     "direccion_entrega": "Calle 26a # 11-30",
-    "numero_celular": "3122341234",
-    "cedula": "1096243865",
+    "numero_celular": "31223412344",
+    "cedula": "10962438654",
     "fecha_nacimiento": "1998-10-20",
     "sexo": "M"
 }
 ### Actualizar Cliente
+
 PUT http://localhost:3000/clientes/update/2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
@@ -232,10 +232,11 @@ Content-Type: application/json
 
 {
     "apellido": "Olave",
-    "correo": "gersonhddddd@gmail.com"
+    "correo": "gersonhdz4@gmail.com"
 }
 
 ### Eliminar Cliente
+
 DELETE http://localhost:3000/clientes/delete/2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 

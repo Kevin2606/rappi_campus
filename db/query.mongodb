@@ -21,33 +21,42 @@ db.createCollection("clientes", {
                 _id: { bsonType: "objectId" },
                 id: {
                     bsonType: "int",
+                    
                 },
                 nombre: {
                     bsonType: "string",
+                    description: "El nombre es obligatorio y de tipo string"
                 },
                 apellido: {
                     bsonType: "string",
+                    description: "El nombre es obligatorio y de tipo string"
                 },
                 correo: {
                     bsonType: "string",
+                    description: "El nombre es obligatorio y de tipo string"
                 },
                 contrasena: {
                     bsonType: "string",
                 },
                 direccion_entrega: {
                     bsonType: "string",
+                    description: "El nombre es obligatorio y de tipo string"
                 },
                 numero_celular: {
                     bsonType: "string",
+                    description: "El nombre es obligatorio y de tipo string"
                 },
                 cedula: {
                     bsonType: "string",
+                    description: "El nombre es obligatorio y de tipo string"
                 },
                 fecha_nacimiento: {
                     bsonType: "string",
+                    description: "El nombre es obligatorio y de tipo string"
                 },
                 sexo: {
                     enum: ["M", "F"],
+                    description: "El nombre es obligatorio y de tipo string"
                 },
             },
             additionalProperties: false,

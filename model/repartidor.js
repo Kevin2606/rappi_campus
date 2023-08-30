@@ -8,16 +8,21 @@ export default class RepartidorModel {
         try {
             return await db.find().toArray();
         } catch (error) {
-            return { status: 500, message: error.message };
+            return Promise.reject(error);
         }
     }
 
     static async obtenerRepartidor(id) {
         try {
-            
-            return await db.findOne({ id: id });
+            const repartidor= await db.findOne({ id: id });
+            if(!repartidor)
+            {   
+                console.log("Repartidor no encontrado")
+                return {status:400, message: "Repartidor no encontrado"}
+            }
+            return repartidor
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
@@ -26,52 +31,66 @@ export default class RepartidorModel {
             repartidor.id = await getNextSequenceValue("repartidores");
             return await db.insertOne(repartidor);
         } catch (error) {
-            if (error.code === 11000)
-                return {
-                    status: 400,
-                    message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-                };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error);
         }
     }
 
     static async actualizarRepartidor(id, repartidor) {
         try {
-            return await db.updateOne(
+            const updateRepartidor=await db.updateOne(
                 { id: id },
                 { $set: repartidor }
             );
+            if(updateRepartidor.acknowledged && updateRepartidor.matchedCount>0)
+            {
+                console.log("Datos actualizados correctamente");
+                return {status:400, message:"Datos actualizados correctamente" }
+            }
+            return updateRepartidor 
         } catch (error) {
-            if (error.code === 11000)
-            return {
-                status: 400,
-                message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-            };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error);
         }
     }
 
     static async eliminarRepartidor(id) {
         try {
-            return await db.deleteOne({ id: id });
+            const removeRepartidor= await db.deleteOne({ id: id });
+            if(removeRepartidor.acknowledged && removeRepartidor.deletedCount>0)
+            {
+                console.log("Cliente eliminado correctamente");
+                return  {status:400, message: "Cliente eliminado Correctamente"} 
+            }
+            return removeRepartidor
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
     static async obtenerRepartidorPorCedula(cedula) {
         try {
-            return await db.findOne({ cedula: cedula });
+            const repartidor= await db.findOne({ cedula: cedula });
+            if(!repartidor)
+            {   
+                console.log("Repartidor no encontrado")
+                return {status:400, message: "Repartidor no encontrado"}
+            }
+            return repartidor
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
     static async obtenerRepartidorPorCorreo(correo) {
         try {
-            return await db.findOne({ correo: correo });
+            const repartidor= await db.findOne({ correo: correo });
+            if(!repartidor)
+            {   
+                console.log("Repartidor no encontrado")
+                return {status:400, message: "Repartidor no encontrado"}
+            }
+            return repartidor
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 }
