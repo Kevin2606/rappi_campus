@@ -11,7 +11,6 @@ export default class AuthModel {
             user.id = await getNextSequenceValue(collection);
             return await con.insertOne(user);
         } catch (error) {
-            console.log(error);
             if (error.code === 11000)
                 return {
                     status: 400,
