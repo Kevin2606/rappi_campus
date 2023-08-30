@@ -282,7 +282,7 @@ db.restaurantes.createIndex({ nombre: 1 }, { unique: true });
 //Documentos de prueba
 db.clientes.insertMany([
     {
-        id_cliente: 1,
+        id: 1,
         nombre: "Juan",
         apellido: "Perez",
         correo: "juanperez@gmail.com",
@@ -294,7 +294,7 @@ db.clientes.insertMany([
         sexo: "M",
     },
     {
-        id_cliente: 2,
+        id: 2,
         nombre: "Maria",
         apellido: "Gomez",
         correo: "mariagomez@gmail.com",
@@ -308,7 +308,7 @@ db.clientes.insertMany([
 ]);
 db.repartidores.insertMany([
     {
-        id_repartidor: 1,
+        id: 1,
         nombre: "Pedro",
         apellido: "Gomez",
         correo: "pedrogomez@gmail.com",
@@ -320,7 +320,7 @@ db.repartidores.insertMany([
         tipo_vehiculo: "Bicicleta",
     },
     {
-        id_repartidor: 2,
+        id: 2,
         nombre: "Luis",
         apellido: "Gomez",
         correo: "luisgomez@gmail.com",
@@ -393,7 +393,7 @@ db.pedidos.insertMany([
 
 db.restaurantes.insertMany([
     {
-        id_restaurante: 1,
+        id: 1,
         nombre: "Restaurante 1",
         direccion: "Calle 1 # 1-1",
         numero_celular: "3000000004",
@@ -404,7 +404,7 @@ db.restaurantes.insertMany([
             "https://www.eltiempo.com/files/image_640_428/uploads/2019/08/22/5d5e9b3a1e0e7.jpeg",
     },
     {
-        id_restaurante: 2,
+        id: 2,
         nombre: "Restaurante 2",
         direccion: "Calle 2 # 2-2",
         numero_celular: "3000000005",

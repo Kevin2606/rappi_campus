@@ -8,7 +8,7 @@ export default class AuthModel {
     static async register(user, collection) {
         try {
             const con = db.collection(collection);
-            user.id_usuario = await getNextSequenceValue("usuarios");
+            user.id = await getNextSequenceValue(collection);
             return await con.insertOne(user);
         } catch (error) {
             console.log(error);
