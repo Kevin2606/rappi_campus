@@ -1,8 +1,9 @@
 import connect from "../db/connectDB.js";
-import getNextSequenceValue from "../helper/counter.js";
+import insertWithTransaction from "../helper/transaction.js";
+    
 
-
-const db = (await connect()).collection("clientes");
+const collection= "clientes"
+const db = (await connect()).db().collection(collection);
 export default class ClienteModel{  
     
     static async getClient(id)
@@ -31,9 +32,8 @@ export default class ClienteModel{
     }
     static async createClient(cliente)
     {
-        try {
-            cliente.id = await getNextSequenceValue("clientes");
-            return await db.insertOne(cliente);
+        try {            
+            return await insertWithTransaction(cliente,collection)
         } catch (error) {
             return Promise.reject(error);
         }

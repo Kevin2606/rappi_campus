@@ -42,14 +42,8 @@ export default (err, req, res, next) => {
                 }
             }   
         }
-        else
-        {
-            errMsg.push(err)
-            res.status(400).json({ status: 400, errMsg }); 
-        }
+        res.status(400).json({ status: 400, errMsg });         
+    } 
+    res.status(400).json({ status: 400, errMsg:"Error interno del servidor" });   
         
-        
-    }
-    errMsg.push(err)
-    res.status(400).json({ status: 400, errMsg });    
 }
