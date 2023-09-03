@@ -10,7 +10,7 @@ export default async function connect() {
       useUnifiedTopology: true,
     };
     const client = await new MongoClient(uri, options).connect();
-    return client.db();
+    return client;
   } catch (error) {
     return {status: 500, message: error};
   }

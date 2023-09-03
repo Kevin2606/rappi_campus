@@ -41,21 +41,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M
 GET http://localhost:3000/repartidores/correo/luisgomez@gmail.com
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
-### Crear repartidor --- ELIMINAR 
-POST http://localhost:3000/repartidores
-Content-Type: application/json
-
-{
-
-    "nombre": "Luis",
-    "apellido": "Gomez",
-    "correo": "luis_gomez@gmail.com",
-    "numero_celular": "3001234567",
-    "cedula": "33333",
-    "fecha_nacimiento": "1990-01-01",
-    "sexo": "M",
-    "tipo_vehiculo": "Carro"
-}
 ### Actualizar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ACTUALIZAR SU INFORMACION
 PUT http://localhost:3000/repartidores/4
 Content-Type: application/json
@@ -207,22 +192,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVkZGExZ
 GET http://localhost:3000/clientes/getClient/2
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
-### Crear cliente
-POST http://localhost:3000/clientes/create
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
-
-Content-Type: application/json
-
-{   "id_cliente":3,   
-    "nombre":"Gerson",
-    "apellido":"Hernandez",
-    "correo": "gersonhdz4@gmail.com",
-    "direccion_entrega": "Calle 26a # 11-30",
-    "numero_celular": "31223412344",
-    "cedula": "10962438654",
-    "fecha_nacimiento": "1998-10-20",
-    "sexo": "M"
-}
 ### Actualizar Cliente
 
 PUT http://localhost:3000/clientes/update/2
@@ -244,7 +213,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M
 
 ### PRODUCTOS ---------------------------------------------------------------------------------------------
 
-### Obtiene todos los oroductos
+### Obtiene todos los productos
 GET http://localhost:3000/productos/getAllProduct
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 

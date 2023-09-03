@@ -1,32 +1,26 @@
 import connect from "../db/connectDB.js";
-import getNextSequenceValue from "../helper/counter.js";
+import insertWithTransaction from "../helper/transaction.js";
 
-const db = (await connect())
+const conexion = (await connect())
 
 
 export default class AuthModel {
     static async register(user, collection) {
-        try {
-            const con = db.collection(collection);
-            user.id = await getNextSequenceValue(collection);
-            return await con.insertOne(user);
+        try {            
+            await insertWithTransaction(user,collection)
+            return user
         } catch (error) {
-            if (error.code === 11000)
-                return {
-                    status: 400,
-                    message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-                };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error); 
         }
     }
 
     static async login(email, collection) {
         try {
-            const con = db.collection(collection);
+            const con = conexion.db().collection(collection);
             const getUser = await con.findOne({ correo: email });
             return getUser;
         } catch (error) {
-            return { status: 400, message: "Usuario no encontrado" };
+            return Promise.reject(error);
         }
     }
 }

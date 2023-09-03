@@ -1,1 +1,104 @@
-function _0x443d(_0x3f313f,_0x57bcd5){const _0x57a7eb=_0x57a7();return _0x443d=function(_0x443dc6,_0x3f7833){_0x443dc6=_0x443dc6-0x15b;let _0x265dc1=_0x57a7eb[_0x443dc6];return _0x265dc1;},_0x443d(_0x3f313f,_0x57bcd5);}const _0x3d9408=_0x443d;function _0x57a7(){const _0x264019=['rules','toArray','Access\x20denied','roles','filename','evItO','1755594VxbvHO','method','30qQXExG','\x1b[33mWARNING:\x20You\x20have\x20not\x20set\x20any\x20policies,\x20All\x20traffic\x20will\x20be\x20denied\x1b[39m','collection','policies','nacl.json','\x20is\x20not\x20defined','decodedObjectName','function','1967CLGcdL','denyCallback','originalUrl','No\x20tienes\x20permisos\x20para\x20acceder\x20a\x20este\x20recurso','customMessage','7767ywfHlv','teqUG','roleSearchPath','QKoxg','16568yUHMcn','json','1061830dhkSRj','16320821waZfsX','1kyIPsg','unless','find','496obxBxq','response','baseUrl','4447278UOBXUJ','status','425410uhNHNk','get'];_0x57a7=function(){return _0x264019;};return _0x57a7();}(function(_0x5af716,_0x457399){const _0xdcd3a7=_0x443d,_0x27a86b=_0x5af716();while(!![]){try{const _0x2668f0=-parseInt(_0xdcd3a7(0x161))/0x1*(parseInt(_0xdcd3a7(0x169))/0x2)+-parseInt(_0xdcd3a7(0x180))/0x3*(parseInt(_0xdcd3a7(0x164))/0x4)+parseInt(_0xdcd3a7(0x15f))/0x5+-parseInt(_0xdcd3a7(0x167))/0x6+parseInt(_0xdcd3a7(0x17b))/0x7*(-parseInt(_0xdcd3a7(0x15d))/0x8)+parseInt(_0xdcd3a7(0x171))/0x9*(parseInt(_0xdcd3a7(0x173))/0xa)+parseInt(_0xdcd3a7(0x160))/0xb;if(_0x2668f0===_0x457399)break;else _0x27a86b['push'](_0x27a86b['shift']());}catch(_0x34a6cf){_0x27a86b['push'](_0x27a86b['shift']());}}}(_0x57a7,0x679b2));import{unless}from'express-unless';import _0x5889d7 from'../db/connectDB.js';import{readConfigFile,mapPolicyToGroup,findRoleFromRequest,findPermissionForRoute,checkIfHasAccess,deny}from'./auth_aux.js';let options={'path':'.','filename':_0x3d9408(0x177),'policies':new Map(),'defaultRole':'guest'};async function config(_0x517c0e,_0x4b1b89){const _0x1f7f5a=_0x3d9408,_0x22f08f=(await _0x5889d7())[_0x1f7f5a(0x175)](_0x1f7f5a(0x16e)),_0x2b350e=await _0x22f08f[_0x1f7f5a(0x163)]()[_0x1f7f5a(0x16c)]();_0x517c0e={'filename':_0x2b350e,'baseUrl':'/','roleSearchPath':'user.rol','denyCallback':_0x42e4c9=>_0x42e4c9[_0x1f7f5a(0x168)](0x193)[_0x1f7f5a(0x15e)]({'message':_0x1f7f5a(0x17e)})},options=Object['assign']({},options,_0x517c0e,{'response':_0x4b1b89});_0x517c0e&&_0x517c0e[_0x1f7f5a(0x16b)]?options['policies']=mapPolicyToGroup(_0x517c0e['rules']):options['policies']=mapPolicyToGroup(readConfigFile(options[_0x1f7f5a(0x16f)]));if(!options['policies']['size'])return _0x1f7f5a(0x181)!==_0x1f7f5a(0x181)?_0xd4ed83():_0x1f7f5a(0x174);return options['policies'];}function authorize(_0x2729b3,_0x2c8470,_0x175d7e){const _0x24857c=_0x3d9408,_0x35e63a=findRoleFromRequest(_0x2729b3,options[_0x24857c(0x15b)],options['defaultRole'],options[_0x24857c(0x179)]);if(_0x2729b3[_0x24857c(0x17d)]==='/')return _0x175d7e();const _0x172b0b=options[_0x24857c(0x176)][_0x24857c(0x16a)](_0x35e63a);if(!_0x172b0b)return _0x2c8470['status'](0x193)['json']({'status':_0x24857c(0x16d),'success':![],'message':'REQUIRED:\x20Policy\x20for\x20role\x20'+_0x35e63a+_0x24857c(0x178)});const _0x44d131=findPermissionForRoute(_0x2729b3[_0x24857c(0x17d)],_0x2729b3[_0x24857c(0x172)],options[_0x24857c(0x166)],_0x172b0b);if(!_0x44d131){if(typeof options['denyCallback']===_0x24857c(0x17a))return _0x24857c(0x170)===_0x24857c(0x15c)?_0x24857c(0x174):options['denyCallback'](_0x2c8470);return _0x2c8470[_0x24857c(0x168)](0x193)[_0x24857c(0x15e)](deny(options[_0x24857c(0x17f)],options[_0x24857c(0x165)]));}return checkIfHasAccess(_0x2729b3[_0x24857c(0x172)],_0x2c8470,_0x175d7e,_0x44d131,options['customMessage'],options[_0x24857c(0x165)],options[_0x24857c(0x17c)]);}authorize[_0x3d9408(0x162)]=unless;export{config,authorize};
+import { unless } from "express-unless";
+import connect from "../db/connectDB.js";
+import {
+    readConfigFile,
+    mapPolicyToGroup,
+    findRoleFromRequest,
+    findPermissionForRoute,
+    checkIfHasAccess,
+    deny,
+} from "./auth_aux.js";
+
+let options = {
+    path: ".",
+    filename: "nacl.json",
+    policies: new Map(),
+    defaultRole: "guest",
+};
+
+async function config(config, response) {
+    const db = (await connect()).db().collection("roles");
+    const roles = await db.find().toArray();
+    config = {
+        filename: roles,
+        baseUrl: "/",
+        roleSearchPath: "user.rol",
+        denyCallback: (res) =>
+            res.status(403).json({
+                message: "No tienes permisos para acceder a este recurso",
+            }),
+    };
+
+    options = Object.assign({}, options, config, { response });
+    if (config && config.rules) {
+        options.policies = mapPolicyToGroup(config.rules);
+    } else {
+        options.policies = mapPolicyToGroup(readConfigFile(options.filename));
+    }
+
+    if (!options.policies.size) {
+        return "\u001b[33mWARNING: You have not set any policies, All traffic will be denied\u001b[39m";
+    }
+    return options.policies;
+}
+
+/**
+ * [authorize Express middleware]
+ * @param  {[type]}   req  [Th request object]
+ * @param  {[type]}   res  [The response object]
+ * @param  {Function} next [description]
+ * @return {[type]}        [description]
+ */
+
+function authorize(req, res, next) {
+    const role = findRoleFromRequest(
+        req,
+        options.roleSearchPath,
+        options.defaultRole,
+        options.decodedObjectName
+    );
+
+    if (req.originalUrl === "/") {
+        return next();
+    }
+
+    const policy = options.policies.get(role);
+
+    if (!policy) {
+        return res.status(403).json({
+            status: "Access denied",
+            success: false,
+            message: `REQUIRED: Policy for role ${role} is not defined`,
+        });
+    }
+
+    const permission = findPermissionForRoute(
+        req.originalUrl,
+        req.method,
+        options.baseUrl,
+        policy
+    );
+
+    if (!permission) {
+        if (typeof options.denyCallback === "function") {
+            return options.denyCallback(res);
+        }
+        return res
+            .status(403)
+            .json(deny(options.customMessage, options.response));
+    }
+
+    return checkIfHasAccess(
+        req.method,
+        res,
+        next,
+        permission,
+        options.customMessage,
+        options.response,
+        options.denyCallback
+    );
+}
+
+authorize.unless = unless;
+
+export { config, authorize };

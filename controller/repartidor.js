@@ -3,27 +3,25 @@ import { crearToken } from "../middleware/jwt.js";
 import { login, register } from "../helper/auth.js";
 
 export default class RepartidorController {
-    static async loginRepartidor(req, res) {
+    static async loginRepartidor(req, res, next) {
         try {
             const user = await login(req.body, "repartidores");
             if (!user)
                 throw { status: 400, message: "Usuario no encontrado" };
             const token = await crearToken(user._id.toString(), "repartidores");
-            res.status(200).json({ token });
+            res.status(200).json({ JWT:token, Info:"Usuario logueado correctamente." });
         } catch (error) {
-            res.status(error.status).json({ message: error.message });
+            next(error);
         }
     }
 
-    static async registerRepartidor(req, res) {
+    static async registerRepartidor(req, res, next) {
         try {
-            const user = await register(req.body, "repartidores");
-            if (user.status === 400)
-                throw { status: 400, message: user.message };
-            const token = await crearToken(user.insertedId.toString(), "repartidores");
-            res.status(200).json({ token });
+            const user = await register(req.body, "repartidores");            
+            const token = await crearToken(user._id.toString(), "repartidores");
+            res.status(200).json({JWT:token, message: "Token creado.",Info:"Usuario registrado correctamente." });
         } catch (error) {
-            res.status(error.status).json({ message: error.message });
+            next(error);
         }
     }
 

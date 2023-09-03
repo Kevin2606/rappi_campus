@@ -29,34 +29,34 @@ db.createCollection("clientes", {
                 },
                 apellido: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y de tipo string"
+                    description: "El apellido es obligatorio y de tipo string"
                 },
                 correo: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y de tipo string"
+                    description: "El correo es obligatorio y de tipo string"
                 },
                 contrasena: {
                     bsonType: "string",
                 },
                 direccion_entrega: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y de tipo string"
+                    description: "El direccion_entrega es obligatorio y de tipo string"
                 },
                 numero_celular: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y de tipo string"
+                    description: "El numero_celular es obligatorio y de tipo string"
                 },
                 cedula: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y de tipo string"
+                    description: "El cedula es obligatorio y de tipo string"
                 },
                 fecha_nacimiento: {
                     bsonType: "string",
-                    description: "El nombre es obligatorio y de tipo string"
+                    description: "El fecha_nacimiento es obligatorio y de tipo string"
                 },
                 sexo: {
                     enum: ["M", "F"],
-                    description: "El nombre es obligatorio y de tipo string"
+                    description: "El sexo es obligatorio"
                 },
             },
             additionalProperties: false,
@@ -564,9 +564,9 @@ db.roles.insertMany([
 //AUTOINCREMENTO
 db.createCollection("counters");
 db.counters.insertMany([
-    { _id: "clientesID", sequence_value: 2 },
-    { _id: "repartidoresID", sequence_value: 2 },
-    { _id: "pedidosID", sequence_value: 2 },
-    { _id: "productosID", sequence_value: 2 },
-    { _id: "restaurantesID", sequence_value: 2 },
+    { _id: "clientesID", sequence_value: 3 },
+    { _id: "repartidoresID", sequence_value: 3 },
+    { _id: "pedidosID", sequence_value: 3 },
+    { _id: "productosID", sequence_value: 3 },
+    { _id: "restaurantesID", sequence_value: 3 },
 ]);

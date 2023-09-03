@@ -1,7 +1,8 @@
 import connect from "../db/connectDB.js";
-import getNextSequenceValue from "../helper/counter.js";
+import insertWithTransaction from "../helper/transaction.js";
 
-const db = (await connect()).collection("repartidores");
+const collection= "repartidores"
+const db = (await connect()).db().collection(collection);
 
 export default class RepartidorModel {
     static async obtenerRepartidores() {

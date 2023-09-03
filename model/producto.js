@@ -1,8 +1,8 @@
 import connect from "../db/connectDB.js";
-import getNextSequenceValue from "../helper/counter.js";
+import insertWithTransaction from "../helper/transaction.js";
 
-
-const db = (await connect()).collection("productos");
+const collection= "productos"
+const db = (await connect()).db().collection(collection);
 export default class ProductoModel{  
     
     static async getProduct(id)
