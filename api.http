@@ -29,26 +29,26 @@ Content-Type: application/json
 ### Obtiene todos los repartidores
 GET http://localhost:3000/v1/repartidores
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyNTRmNTM1NzIyZTkyZGEyZGYwOCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1MzAxMSwiZXhwIjoxNjkzODU2NjExfQ.G2dcjJCBdNdh6-1Ff0r5K1RCnTNFfQYr4yCmioVlAVU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyZTc4MmE1ZGRjMTc4Y2RhYWViOCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1NTM5NSwiZXhwIjoxNjkzODU4OTk1fQ.Fmtqbx7poi7sVOUGLB7vGC7rMtlTeGMA3xhpTnr1A_k
 
 
 ### Obtener repartidor por id
-GET http://localhost:3000/repartidores/2
+GET http://localhost:3000/v1/repartidores/2
 Headers: Accept-Version: 1.0.0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyZTc4MmE1ZGRjMTc4Y2RhYWViOCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1NTM5NSwiZXhwIjoxNjkzODU4OTk1fQ.Fmtqbx7poi7sVOUGLB7vGC7rMtlTeGMA3xhpTnr1A_k
 
 ### Obtener repartidor por cedula
-GET http://localhost:3000/repartidores/cedula/123456781
+GET http://localhost:3000/v1/repartidores/cedula/123456781
 Headers: Accept-Version: 1.0.0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
 ### Obtener repartidor por correo
-GET http://localhost:3000/repartidores/correo/luisgomez@gmail.com
+GET http://localhost:3000/v1/repartidores/correo/luisgomez@gmail.com
 Headers: Accept-Version: 1.0.0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
 ### Actualizar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ACTUALIZAR SU INFORMACION
-PUT http://localhost:3000/repartidores/4
+PUT http://localhost:3000/v1/repartidores/4
 Headers: Accept-Version: 1.0.0
 Content-Type: application/json
 
@@ -58,7 +58,8 @@ Content-Type: application/json
 }
 
 ### Eliminar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ELIMINAR SU INFORMACION
-DELETE http://localhost:3000/repartidores/4
+DELETE http://localhost:3000/v1/repartidores/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyZTc4MmE1ZGRjMTc4Y2RhYWViOCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1NTM5NSwiZXhwIjoxNjkzODU4OTk1fQ.Fmtqbx7poi7sVOUGLB7vGC7rMtlTeGMA3xhpTnr1A_k
 
 ### PEDIDOS         ---------------------------------------------------------------------------------------------
 

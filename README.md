@@ -143,7 +143,7 @@ http://localhost:3000/repartidores/cedula/33333a
 #### Repartidores
 
 ```Bash
-http://localhost:3000/repartidores
+http://localhost:3000/v1/repartidores
 ```
 
 | Método  | Ruta                                  | Descripción                               |
@@ -154,7 +154,6 @@ http://localhost:3000/repartidores
 | GET     | `/:id`                               | Obtener un repartidor por su ID           |
 | POST    | `/`                                  | Crear un nuevo repartidor                 |
 | PUT     | `/:id`                               | Actualizar la información de un repartidor por su ID |
-| DELETE  | `/:id`                               | Eliminar un repartidor por su ID          |
 
 
 #### Pedidos
