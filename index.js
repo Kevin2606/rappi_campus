@@ -13,8 +13,8 @@ const app = express();
 app.use(express.json());
 
 app.use('/auth', authRouter)
-//app.use(passportConfig.initialize())
-//app.use(passportConfig.authenticate('bearer', { session: false }), authorize)
+app.use(passportConfig.initialize())
+app.use(passportConfig.authenticate('bearer', { session: false }), authorize)
 app.use('/repartidores', versionedRepartidoresRouter);
 app.use('/pedidos', versionedPedidosRouter)
 app.use('/restaurantes', versionedRestaurantesRouter);

@@ -1,4 +1,5 @@
 import PedidoModel from '../../model/v1/pedido.js';
+import { pedidoSchema } from '../../schemas/schemas.js';
 
 export default class PedidoController {
     static async obtenerPedidos(req, res, next) {
@@ -48,6 +49,8 @@ export default class PedidoController {
 
     static async crearPedido(req, res, next) {
         try {
+            const validacion = pedidoSchema.safeParse(req.body);
+            if (!validacion.success) return res.status(400).json({ message: validacion.error.errors.map(error => `${error.path} - ${error.message}`)});
             const pedido = await PedidoModel.crearPedido(req.body);
             res.status(201).json(pedido);
         } catch (error) {

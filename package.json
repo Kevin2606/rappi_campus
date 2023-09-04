@@ -21,7 +21,8 @@
     "mongodb": "5.8.1",
     "object-path": "0.11.8",
     "passport": "0.6.0",
-    "passport-http-bearer": "1.0.1"
+    "passport-http-bearer": "1.0.1",
+    "zod": "3.22.2"
   },
   "devDependencies": {
     "express-rate-limit": "6.10.0",
