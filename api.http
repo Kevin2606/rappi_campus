@@ -1,9 +1,9 @@
 ### Rappi_Campus - Prueba de Endpoinst
 ### REPARTIDORES ---------------------------------------------------------------------------------------------
 ### Register Repartidor
-POST http://localhost:3000/auth/repartidores/register
-Accept-Version: 1.0.0 
+POST http://localhost:3000/auth/repartidores/register 
 Content-Type: application/json  
+
 {
     "nombre": "Luis",
     "contrasena": "123456a",
@@ -22,15 +22,15 @@ Content-Type: application/json
 //Accept-Version: 1.0.0
 
 {
-    "correo": "luis_gomez@gmail.com",
-    "contrasena": "123456"
+    "correo": "luis_gomeza@gmail.com",
+    "contrasena": "123456a"
 }
 
 ### Obtiene todos los repartidores
-GET http://localhost:3000/repartidores
+GET http://localhost:3000/v1/repartidores
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyNTRmNTM1NzIyZTkyZGEyZGYwOCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1MzAxMSwiZXhwIjoxNjkzODU2NjExfQ.G2dcjJCBdNdh6-1Ff0r5K1RCnTNFfQYr4yCmioVlAVU
 
-//Accept-Version: 1.0.0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjQxNWIyMDVmNjhmMDcyODE4YWRlNSIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzgyMzY3MSwiZXhwIjoxNjkzODI3MjcxfQ.Ve3bmtFY61th2afaZU2lf_0VvjX3aQ1pdoIcVUj0zWY;
 
 ### Obtener repartidor por id
 GET http://localhost:3000/repartidores/2

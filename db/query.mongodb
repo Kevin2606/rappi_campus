@@ -501,7 +501,7 @@ db.roles.insertMany([
         group: "repartidores",
         permissions: [
             {
-                resource: "repartidores/*",
+                resource: "v1/repartidores/*",
                 methods: ["POST", "GET", "PUT"],
                 action: "allow",
             },
