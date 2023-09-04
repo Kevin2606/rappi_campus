@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "express-rate-limit": "6.10.0",
+    "express-routes-versioning": "1.0.1",
     "nodemon": "3.0.1"
   }
 }

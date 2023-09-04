@@ -2,8 +2,8 @@
 ### REPARTIDORES ---------------------------------------------------------------------------------------------
 ### Register Repartidor
 POST http://localhost:3000/auth/repartidores/register
-Content-Type: application/json
-
+Accept-Version: 1.0.0 
+Content-Type: application/json  
 {
     "nombre": "Luis",
     "contrasena": "123456a",
@@ -19,6 +19,7 @@ Content-Type: application/json
 ### Login Repartidor
 POST http://localhost:3000/auth/repartidores/login
 Content-Type: application/json
+//Accept-Version: 1.0.0
 
 {
     "correo": "luis_gomez@gmail.com",
@@ -27,22 +28,28 @@ Content-Type: application/json
 
 ### Obtiene todos los repartidores
 GET http://localhost:3000/repartidores
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+
+//Accept-Version: 1.0.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjQxNWIyMDVmNjhmMDcyODE4YWRlNSIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzgyMzY3MSwiZXhwIjoxNjkzODI3MjcxfQ.Ve3bmtFY61th2afaZU2lf_0VvjX3aQ1pdoIcVUj0zWY;
 
 ### Obtener repartidor por id
 GET http://localhost:3000/repartidores/2
+Headers: Accept-Version: 1.0.0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
 ### Obtener repartidor por cedula
 GET http://localhost:3000/repartidores/cedula/123456781
+Headers: Accept-Version: 1.0.0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
 ### Obtener repartidor por correo
 GET http://localhost:3000/repartidores/correo/luisgomez@gmail.com
+Headers: Accept-Version: 1.0.0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
 
 ### Actualizar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ACTUALIZAR SU INFORMACION
 PUT http://localhost:3000/repartidores/4
+Headers: Accept-Version: 1.0.0
 Content-Type: application/json
 
 {
