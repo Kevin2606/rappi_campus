@@ -30,28 +30,29 @@ Accept-Version: 1.0.0
 ### Obtiene todos los repartidores
 GET http://localhost:3000/repartidores
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYzNzRjZjRmZTMyMWY5M2M4MjdlYiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1NzY1OSwiZXhwIjoxNjkzODYxMjU5fQ.4Soxczea-Ntvci6i-zpZ5hEzLOQFEEpku3yOmJt2Pwc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I
 
 
 ### Obtener repartidor por id
-GET http://localhost:3000/repartidores/2
-Accept-Version: 3.0.0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyZTc4MmE1ZGRjMTc4Y2RhYWViOCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1NTM5NSwiZXhwIjoxNjkzODU4OTk1fQ.Fmtqbx7poi7sVOUGLB7vGC7rMtlTeGMA3xhpTnr1A_k
+GET http://localhost:3000/repartidores/1
+Accept-Version: 1.0.0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I
 
 ### Obtener repartidor por cedula
-GET http://localhost:3000/repartidores/cedula/123456781
+GET http://localhost:3000/repartidores/cedula/123456782
 Accept-Version: 1.0.0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I
 
 ### Obtener repartidor por correo
-GET http://localhost:3000/repartidores/correo/luisgomez@gmail.com
+GET http://localhost:3000/repartidores/correo/pedrogomez@gmail.com
 Headers: Accept-Version: 1.0.0
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I
 
-### Actualizar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ACTUALIZAR SU INFORMACION
+### Actualizar repartidor --- TODO: QUE SOLO EL USUARIO DEL TOKEN PUEDA ACTUALIZAR SU INFORMACION
 PUT http://localhost:3000/repartidores/2
 Headers: Accept-Version: 1.0.0
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I;
 
 {
     "apellido": "Fernando",
@@ -60,40 +61,35 @@ Content-Type: application/json
 
 ### Eliminar repartidor --- QUE SOLO EL USUARIO DEL TOKEN PUEDA ELIMINAR SU INFORMACION
 DELETE http://localhost:3000/repartidores/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjYyZTc4MmE1ZGRjMTc4Y2RhYWViOCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg1NTM5NSwiZXhwIjoxNjkzODU4OTk1fQ.Fmtqbx7poi7sVOUGLB7vGC7rMtlTeGMA3xhpTnr1A_k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I;
 
 ### PEDIDOS         ---------------------------------------------------------------------------------------------
 
 ### Obtiene todos los pedidos - con token de Repartidor
 GET http://localhost:3000/pedidos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MzM4OWQ0MzlmODczNjdjZmNmNiIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzODY0NzY3LCJleHAiOjE2OTM4NjgzNjd9.MbuZa4pWq2YfiOqQb1H3lfpU51pRSWbxWsT-8WIlsS0;
 ### Obtener pedido por id
 GET http://localhost:3000/pedidos/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MzM4OWQ0MzlmODczNjdjZmNmNiIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzODY0NzY3LCJleHAiOjE2OTM4NjgzNjd9.MbuZa4pWq2YfiOqQb1H3lfpU51pRSWbxWsT-8WIlsS0;
 ### Obtener pedidos por id de cliente
 GET http://localhost:3000/pedidos/cliente/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MzM4OWQ0MzlmODczNjdjZmNmNiIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzODY0NzY3LCJleHAiOjE2OTM4NjgzNjd9.MbuZa4pWq2YfiOqQb1H3lfpU51pRSWbxWsT-8WIlsS0;
 ### Obtener pedidos por id de repartidor
-GET http://localhost:3000/pedidos/repartidor/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
-
+GET http://localhost:3000/pedidos/repartidor/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MzM4OWQ0MzlmODczNjdjZmNmNiIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzODY0NzY3LCJleHAiOjE2OTM4NjgzNjd9.MbuZa4pWq2YfiOqQb1H3lfpU51pRSWbxWsT-8WIlsS0;
 ### Obtener pedidos por id de restaurante
 GET http://localhost:3000/pedidos/restaurante/1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MzM4OWQ0MzlmODczNjdjZmNmNiIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzODY0NzY3LCJleHAiOjE2OTM4NjgzNjd9.MbuZa4pWq2YfiOqQb1H3lfpU51pRSWbxWsT-8WIlsS0;
 
 ### Crear pedido - SOLO CON TOKEN DE CLIENTE
 POST http://localhost:3000/pedidos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1NTM5MjMwMzljYzYwNThjMzc3ZSIsInJvbCI6ImNsaWVudGVzIiwiaWF0IjoxNjkzODY1MjczLCJleHAiOjE2OTM4Njg4NzN9.YhrF2tKjRyCWGDBRl5xGXslueY2zZwdGRh-oHgYVdyA;
 Content-Type: application/json
 
 {
-    "id_cliente": 99,
-    "id_repartidor": 99,
-    "id_restaurante": 99,
+    "id_cliente": 1,
+    "id_repartidor": 1,
+    "id_restaurante": 1,
     "productos": [
         {
             "id_producto": 1,
@@ -110,8 +106,8 @@ Content-Type: application/json
 }
 
 ### Actualizar pedido -- SOLO CON TOKEN DE CLIENTE
-PUT http://localhost:3000/pedidos/19
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+PUT http://localhost:3000/pedidos/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I;
 
 Content-Type: application/json
 
@@ -122,7 +118,7 @@ Content-Type: application/json
 
 ### Eliminar pedido
 DELETE http://localhost:3000/pedidos/19 -- SOLO CON TOKEN DE CLIENTES
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWVlMzA3M2ZiNzM4MjAyOTk1YTZmMCIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5MzM3NzMzMCwiZXhwIjoxNjkzMzgwOTMwfQ.P3Tty_b7cYx0cOPNmAVyaMTb5od0TZg1d2agnwOhFfI;
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZjY1MDRhMTgzOTllYjg2N2Y5NDYyNiIsInJvbCI6InJlcGFydGlkb3JlcyIsImlhdCI6MTY5Mzg2NDM3MCwiZXhwIjoxNjkzODY3OTcwfQ.yoAh08RecxgPbgkyglmSgtismWqG_f2y6VjhO4p2B5I;
 
 
 ### RESTAURANTES                ---------------------------------------------------------------------------------------------

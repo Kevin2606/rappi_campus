@@ -52,7 +52,6 @@ export default class PedidoModel {
     static async crearPedido(pedido) {
         try {
             //TODO: valor_total debe ser calculado por el sistema
-            pedido.valor_total = new Decimal128(`${pedido.valor_total}`); 
             pedido.fecha_pedido = new Date(pedido.fecha_pedido); // Formato: AAAA-MM-DD
             return await insertWithTransaction(pedido,collection)            
         } catch (error) {
