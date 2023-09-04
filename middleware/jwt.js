@@ -2,7 +2,7 @@ import { SignJWT, jwtVerify } from "jose"
 import dotenv from 'dotenv';
 import connect from "../db/connectDB.js";
 import { ObjectId } from "mongodb";
-const db = (await connect())
+const db = (await connect()).db()
 
 dotenv.config();
 
@@ -30,6 +30,7 @@ const validarToken = async (token) => {
         getUser.rol = rol;
         return getUser;
     } catch (error) {
+        console.log(error);
         return false;
     }
 }
