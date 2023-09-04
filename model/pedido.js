@@ -13,7 +13,7 @@ export default class PedidoModel {
         try {
             return await db.find().toArray();
         } catch (error) {
-            return { status: 500, message: error.message };
+            return Promise.reject(error);
         }
     }
     
@@ -21,7 +21,7 @@ export default class PedidoModel {
         try {
             return await db.findOne({ id_pedido: id });
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
@@ -29,7 +29,7 @@ export default class PedidoModel {
         try {
             return await db.find({ id_cliente: id }).toArray();
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
@@ -37,7 +37,7 @@ export default class PedidoModel {
         try {
             return await db.find({ id_repartidor: id }).toArray();
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
@@ -45,7 +45,7 @@ export default class PedidoModel {
         try {
             return await db.find({ id_restaurante: id }).toArray();
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
@@ -54,15 +54,9 @@ export default class PedidoModel {
             //TODO: valor_total debe ser calculado por el sistema
             pedido.valor_total = new Decimal128(`${pedido.valor_total}`); 
             pedido.fecha_pedido = new Date(pedido.fecha_pedido); // Formato: AAAA-MM-DD
-            pedido.id_pedido = await getNextSequenceValue("pedidos");
-            return await db.insertOne(pedido);
+            return await insertWithTransaction(pedido,collection)            
         } catch (error) {
-            if (error.code === 11000)
-                return {
-                    status: 400,
-                    message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-                };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error);
         }
     }
 
@@ -79,12 +73,7 @@ export default class PedidoModel {
                 { $set: pedido }
             );
         } catch (error) {
-            if (error.code === 11000)
-            return {
-                status: 400,
-                message: `${Object.keys(error.keyValue)[0]}: Ya registrado en el sistema`,
-            };
-            return { status: 400, message: "Error validacion fallida" };
+            return Promise.reject(error);
         }
     }
 
@@ -92,7 +81,7 @@ export default class PedidoModel {
         try {
             return await db.deleteOne({ id_pedido: id });
         } catch (error) {
-            return { status: 400, message: error.message };
+            return Promise.reject(error);
         }
     }
 
