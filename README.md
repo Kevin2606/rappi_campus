@@ -1,201 +1,239 @@
-# Rappi Campus
+# Rappi Campus 🛵🌮
 
-![imagen](https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Rappi_logo.svg/1200px-Rappi_logo.svg.png)
+## Instalacion y uso
+Para hacer uso de **Rappi Campus**  se debe tener instalado [GIT](https://git-scm.com/), [Node.js](https://nodejs.org/es/)
 
-## ¿Qué implica Rappi?
+> Nota: El proyecto hace uso de la version de nodejs v18.17.0
 
-Rappi opera como una compañía que simplifica el acceso de las personas a productos y servicios esenciales.
-
-## Gama de Servicios en Rappi:
-- Supermercado:
-Este servicio se centra en la comodidad y en el ahorro de tiempo y dinero, ya que Rappi permite realizar una compra completa de víveres y productos esenciales.
-
-- Restaurantes y Comidas:
-La premisa de este servicio es permitir a los usuarios ordenar comida de cualquier restaurante en su área, proporcionando una variedad de opciones gastronómicas.
-
-- Rappicash:
-En cuanto al servicio Rappicash, se enfoca en llevar efectivo a la ubicación deseada por el cliente, brindando facilidad en el acceso a dinero en efectivo.
-
-- Salud y Bienestar:
-En lo que concierne al servicio de Salud, Rappi facilita la compra de medicamentos y artículos de salud necesarios para los usuarios.
-
-## Operación de una Aplicación de Entrega a Domicilio:
-
-![image](https://github.com/Kevin2606/rappi_campus/assets/54305330/49857b4f-df51-474a-a8de-f64505e20811)
-
-1. Creación y Gestión de Cuentas:
-Los usuarios se conectan con la aplicación mediante el proceso de registro. Por ende, este proceso debe ser rápido y sencillo, solicitando únicamente la información esencial. La mayoría de las aplicaciones de entrega utilizan métodos como correo electrónico, contraseña y número telefónico, así como opciones de registro a través de Google o Facebook.
-
-2. Exploración de Servicios:
-Los usuarios tienen acceso a un catálogo de restaurantes o servicios, y es recomendable incorporar una función de búsqueda para una navegación más eficiente. Los clientes suelen buscar opciones de pedido por nombre del establecimiento, ubicación o menú.
-
-3. Realización de Pedidos:
-Los usuarios deben tener la posibilidad de agregar artículos al carrito en pocos clics y también deben poder modificar o eliminar elementos fácilmente. Luego, pueden revisar un resumen de su compra, el cual debe ser confirmado antes de proceder al pago.
-
-4. Procesamiento de Pagos:
-Comienza ofreciendo de 2 a 3 métodos de pago, con la opción de expandir a medida que la plataforma crezca. Si los usuarios han ingresado sus detalles de pago previamente, se les debe permitir seleccionar esta opción durante el proceso de pago.
-
-5. Rastreo de Pedidos:
-La función de seguimiento permite a los usuarios conocer la ubicación de sus pedidos en tiempo real. El seguimiento se lleva a cabo utilizando APIs de ubicación, como la proporcionada por Google en Android o la CoreLocation Framework en iOS. Estas herramientas permiten estimar el tiempo de entrega aproximado basado en la ubicación del repartidor.
-
-6. Notificaciones:
-Dado que los clientes objetivos suelen tener agendas ocupadas, es fundamental mantenerlos informados sobre el estado de sus pedidos (Confirmado, En Progreso, En Camino, Entregado). Esto puede lograrse a través de notificaciones push o mensajes de texto, garantizando que solo se envíen notificaciones relevantes.
-
-7. Valoraciones y Opiniones:
-Los usuarios comparten sus experiencias al otorgar calificaciones y escribir reseñas. Fomenta su participación al permitirles evaluar los servicios de entrega, el tiempo de espera y la calidad de los alimentos. Las reseñas también son útiles para detectar problemas potenciales en el servicio.
-
-8. Historial de Pedidos:
-Ofrecer a los usuarios un historial de pedidos anteriores mejora su experiencia. Pueden acceder fácilmente a los platos que más les gustaron y repetir pedidos. Esto brinda comodidad y fomenta la lealtad del cliente.
-
-![image](https://github.com/Kevin2606/rappi_campus/assets/54305330/8c3c8968-5a99-4133-b970-121fedc7c04f)
-
-## Biblografia
-
-- [Rappi](https://www.rappi.com.co/)
-- [Rappi: ¿Qué es?](https://blog.rappi.com/que-es-rappi/)
-- [Rappi: ¿Cómo funciona?](https://www.lacoladerata.co/opinion/analisis/como-funcionan-las-companias-de-domicilio-como-rappi/)
-
-
-## ¿Qué es Rappi Campus?
-
-Rappi Campus es un proyecto que permitira brindar un servicio de entrega de productos a domicilio a las personas, utilizando tecnologias de desarrollo web y movil.
-
-## ¿Qué tecnologias se utilizaran?
-
-- [React](https://es.reactjs.org/)
-- [MongoDB](https://www.mongodb.com/es)
-- [Express](https://expressjs.com/es/)
-- [NodeJS](https://nodejs.org/es/)
-
-## ¿Que servicios se ofreceran?
-- Modulo de clientes
-- Modulo de repartidores
-- Modulo de restaurantes
-- Servicio de entrega a domicilio
-- Servicio de pago en linea
-- Servicio de rastreo de pedidos
-- Servicio de notificaciones
-- Servicio de valoraciones y opiniones
-- Servicio de historial de pedidos
-
-
-## Cómo asignar ramas en GitHub:
-
-### Paso 1: Crear una nueva rama
+### Clonar el repositorio
 ```bash
-# Desde la línea de comandos
-git checkout -b nombre-de-la-rama
+git clone https://github.com/Kevin2606/rappi_campus.git
+```
+> Una vez clonado el repositorio accede a la carpeteta del proyecto
+### Instalar dependencias
+```bash
+npm install
+```
+### Configurar variables de entorno
+Crear un archivo .env en la raiz del proyecto
+```bash
+touch .env
+```
+> Nota: Este comando solo funciona en sistemas operativos basados en Unix.
+> Si estas en Windows puedes crear el archivo .env desde el explorador de archivos
+
+Una vez creado el archivo .env, accede a el desde un editor de texto
+Agregar las siguientes variables de entorno
+```bash
+ATLAS_USER="root"
+ATLAS_PASSWORD=""
+ATLAS_CLUSTER=""
+ATLAS_DB="db_rappi_campus"
+JWT_SECRET="secret"
+PORT=3000
+```
+> Nota: En el campo port se puede cambiar a un puerto que no este en uso, por ejemplo 8080, 3000, 5000, etc. El rango de puertos disponibles es de 0 a 65535, se recomienda no utilizar los puertos reservados que van del 0 al 1023, para mas informacion sobre los puertos reservados [click aqui](https://es.wikipedia.org/wiki/Anexo:Puertos_de_red_utilizados_por_protocolos_de_transporte)
+>
+> Nota: En el campo ATLAS_USER y ATLAS_PASSWORD se debe agregar el usuario y contraseña de la base de datos, si se usa el archivo .env.example se debe cambiar el valor de USER y PASSWORD por los valores de la base de datos que se encuentra en la nube.
+> 
+> Nota: En el campo JWT_SECRET se debe agregar una cadena de texto que sera utilizada para la generacion de tokens JWT, esta cadena de texto puede ser cualquiera, como el que esta por ejemplo: "secret".
+>
+> Nota: En el campo ATLAS_CLUSTER se debe agregar el nombre del cluster de la base de datos, si se usa el archivo .env.example se debe cambiar el valor de CLUSTER por el valor de la base de datos que se encuentra en la nube. Por ejemplo: "ATLAS_CLUSTER="cluster0.owv3sij.mongodb.net"
+
+>**Cada cambio en las variables de entorno requiere reiniciar el servidor para que los cambios surtan efecto.**
+
+### Base de datos
+En la carpeta **database** se encuentra el archivo **query.mongodb** que contiene el script para crear la base de datos y las tablas necesarias para el funcionamiento del proyecto.
+
+Tambien puedes optar por usar el archivo **.env.example** que contiene las variables de entorno necesarias para la conexion a la base de datos, solo debes cambiar el nombre del archivo a **.env** y esta te conectara a la base de datos que se encuentra en la nube.
+
+
+### Iniciar el servidor
+Para iniciar el servidor se debe ejecutar en la terminal para iniciar el servidor.
+
+```bash
+npm run dev
 ```
 
-### Paso 2: Realizar cambios y confirmar
-Realiza tus cambios en la nueva rama y luego confírmalos.
-```bash
-git add .
-git commit -m "Descripción de los cambios"
-```
+### Uso de la plataforma
+Para hacer uso de la plataforma se debe contar con herramientas informaticas para la realizacion de pruebas de api como **[Thunder Client](https://www.thunderclient.com/)** o **[Postman](https://www.postman.com/)**, ademas necesitas obtener un token de autenticacion, para esto se debe hacer una peticion GET a la ruta **/auth**.
 
-### Paso 3: Subir la rama al repositorio remoto
-```bash
-git push origin nombre-de-la-rama
-```
+**NOTA: En la raiz del proyecto, el archivo api.http contiene ejemplos de peticiones para cada endpoint. Puedes hacer uso de cualquiera de las herramientas anteriormente mencionadas, o usar [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) y ejecutar cada peticion con un solo click**
 
-### Paso 4: Crear una Pull Request (PR)
-Dirígete a tu repositorio en GitHub y verás un mensaje para comparar y crear una Pull Request desde tu rama. Completa los detalles y crea la PR.
 
-### Paso 5: Revisión y fusión
-Espera a que otros revisen tus cambios en la PR. Si todo está bien, alguien con los permisos adecuados puede fusionar la PR en la rama principal.
+### Obtener token de autenticacion
+Para la obtencion del token se 
 
-## Cómo realizar un release en GitHub:
-
-### Paso 1: Preparar la versión
-Asegúrate de que todos los cambios relevantes estén en la rama principal y lista para el release.
-
-### Paso 2: Crear un tag (etiqueta) para la versión
-```bash
-# Crear un tag y asociarlo al commit actual
-git tag -a v1.0.0 -m "Versión 1.0.0"
-```
-
-### Paso 3: Subir el tag al repositorio remoto
-```bash
-git push origin v1.0.0
-```
-
-### Paso 4: Crear el release en GitHub
-1. Ve al repositorio en GitHub.
-2. Navega a la pestaña "Releases" y haz clic en "Create a new release".
-3. Ingresa el nombre del tag (ej. v1.0.0) en "Tag version".
-4. Completa el título del release.
-5. Puedes añadir notas adicionales y enlaces.
-6. Haz clic en "Publish release" para crear el release.
-
-### Código en consola para asignar ramas y realizar un release:
-```bash
-# Crear y cambiar a una nueva rama
-git checkout -b nombre-de-la-rama
-
-# Realizar cambios y confirmar en la nueva rama
-git add .
-git commit -m "Descripción de los cambios"
-
-# Subir la rama al repositorio remoto
-git push origin nombre-de-la-rama
-
-# Crear un tag y subirlo al repositorio remoto
-git tag -a v1.0.0 -m "Versión 1.0.0"
-git push origin v1.0.0
-```
-
-Recuerda reemplazar `nombre-de-la-rama` y `v1.0.0` con los nombres y versiones adecuados según tu proyecto.
-
-# Notion: Plataforma de Gestión de Tareas y Colaboración
-
-![imagen](https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_23f1df4a48002425b3574347f0ea5676/notion.png)
-
-**Notion** es una plataforma que combina la gestión de tareas, la toma de notas y la colaboración en un solo lugar. Permite a los usuarios crear y organizar información de manera flexible, lo que la hace ideal para equipos y proyectos. Aquí hay una descripción general de cómo funcionaba Notion:
-
-1. Espacio de Trabajo Estructurado
-Notion se basa en el concepto de páginas y bloques. Las páginas pueden ser carpetas, documentos o bases de datos, y los bloques son elementos individuales de contenido dentro de esas páginas. Los bloques pueden ser texto, listas, imágenes, enlaces, tablas, archivos adjuntos, etc.
-
-2. Organización Personalizada
-Los usuarios pueden crear su propio sistema de organización mediante la creación y la jerarquía de páginas y subpáginas. Esto permite adaptar Notion a las necesidades específicas de cada usuario o proyecto.
-
-3. Gestión de Tareas y Proyectos
-Notion permite crear listas de tareas, tablas Kanban, calendarios y más para la gestión de proyectos y tareas. Puedes asignar tareas a miembros del equipo, establecer fechas límite y prioridades.
-
-4. Colaboración en Tiempo Real
-Varios usuarios pueden colaborar en un espacio de trabajo de Notion al mismo tiempo. Los cambios se reflejan en tiempo real, lo que facilita la colaboración en equipo sin problemas.
-
-5. Bases de Datos y Consultas
-Notion permite crear bases de datos personalizadas con campos y propiedades específicas. Puedes agregar filtros, ordenar y agrupar datos en estas bases de datos para un análisis más profundo.
-
-6. Plantillas y Personalización
-Notion proporciona una amplia variedad de plantillas predefinidas para diferentes casos de uso, como gestión de proyectos, seguimiento de objetivos, planificación de viajes y más. También puedes personalizar estas plantillas según tus necesidades.
-
-7. Integraciones y Automatizaciones
-Notion ofrece integraciones con otras herramientas populares, como Google Drive, Slack, Trello y más. También tiene funciones de automatización que permiten crear flujos de trabajo automatizados.
-
-8. Aplicaciones Móviles y Acceso en Línea
-Notion está disponible en dispositivos móviles (iOS y Android) y se puede acceder a través de navegadores web, lo que permite acceder a tus datos desde cualquier lugar.
+| Método  | Ruta                                   | Descripción                         |
+| ------- | -------------------------------------- | ----------------------------------- |
+| POST    | `/auth/repartidores/login`                  | Iniciar sesión como repartidor     |
+| POST    | `/auth/repartidores/register`               | Registrar un nuevo repartidor       |
+| POST    | `/auth/clientes/login`                      | Iniciar sesión como cliente        |
+| POST    | `/auth/clientes/register`                   | Registrar un nuevo cliente          |
+| POST    | `/auth/restaurantes/login`                  | Iniciar sesión como restaurante     |
+| POST    | `/auth/restaurantes/register`               | Registrar un nuevo restaurante    |
 
 Ejemplo:
 
-![image](https://github.com/Kevin2606/rappi_campus/assets/54305330/a683f9e3-bedb-4ade-ba42-d78cae9809c9)
+- Para el registro de un nuevo usuario como registrador se debe hacer una peticion POST a la ruta **/auth/repartidores/register** con el siguiente body:
+```json
+{
+    "nombre": "Luis",
+    "contrasena": "123456a",
+    "apellido": "Gomeza",
+    "correo": "luis_gomeza@gmail.com",
+    "numero_celular": "3001234567a",
+    "cedula": "33333a",
+    "fecha_nacimiento": "1990-01-01",
+    "sexo": "M",
+    "tipo_vehiculo": "Carro"
+}
+```
 
-Bibliografía:
-- [Notion](https://www.notion.so/)
-- [¿Qué es Notion y cómo funciona? Guía completa - Crehana](https://www.crehana.com/blog/negocios/que-es-notion/)
-- [Cómo Usar Notion: Guía Completa Para Principiantes - Juan Pardo](https://juanpardo.es/como-usar-notion/)
-- [Notion, qué es y cómo funciona - El Grupo Informático](https://www.elgrupoinformatico.com/tutoriales/notion-que-como-funciona-t77621.html)
+- Para el inicio de sesion de un usuario como registrador se debe hacer una peticion POST a la ruta **/auth/repartidores/login** con el siguiente body:
+```json
+{
+    "correo": "luis_gomeza@gmail.com",
+    "contrasena": "123456a"
+}
+```
 
 
-# Esquema de la Base de Datos
+El token de autenticacion sera necesario para cada endpoint listado en la seccion siguiente, para hacer uso de estos endpoints se debe agregar el token de autenticacion en el header de la peticion con el nombre **Authorization**.
+> Nota: El token de autenticacion tiene una duracion de 1 hora, despues de este tiempo se debe volver a solicitar un nuevo token.
+> 
+> Tambien las rutas de registro e inicio de sesion tienen un limite de peticiones por hora, si se supera este limite se debe esperar para volver a hacer una peticion.
 
-![Esquema](src/img/image.png)
+### Roles y Permisos
+La plataforma cuenta con 3 roles: **Repartidor**, **Cliente** y **Restaurante**.
 
-La base de datos que se utilizara para el proyecto sera MongoDB, ya que es una base de datos NoSQL, que permite almacenar datos en formato JSON, lo que permite una mayor flexibilidad y escalabilidad.
+Cada rol tiene permisos diferentes para hacer uso de los endpoints, a continuacion se listaran los endpoints disponibles para cada rol.
 
 
-## Autores
-- [Kevin Andres Gallardo Robles](https://github.com/Kevin2606)
-- [Gerson Hernandez Olave](https://github.com/gersonhdz8)
+| Rol           | Recurso              | Métodos               |
+| --------------- | -------------------- | ---------------------- |
+| clientes        | `clientes/*`         | POST, GET, PUT         |
+| clientes        | `pedidos/*`          | POST, GET, PUT         |
+| clientes        | `productos/*`        | GET                    |
+| clientes        | `restaurantes/*`     | GET                    |
+| clientes        | `repartidores/*`     | GET                    |
+| repartidores    | `repartidores/*`     | POST, GET, PUT         |
+| repartidores    | `pedidos/*`          | GET                    |
+| repartidores    | `restaurantes/*`     | GET                    |
+| repartidores    | `productos/*`        | GET                    |
+| repartidores    | `clientes/*`         | GET                    |
+| restaurantes    | `restaurantes/*`     | POST, GET, PUT         |
+| restaurantes    | `pedidos/*`          | GET                    |
+| restaurantes    | `productos/*`        | POST, GET, PUT         |
+| restaurantes    | `clientes/*`         | GET                    |
+| restaurantes    | `repartidores/*`     | GET                    |
+
+### Endpoints
+
+Por cada endpoint se debe agregar el token de autenticacion en el header de la peticion con el nombre **Authorization**.
+
+Ademas se debe agregar el header **Content-Type** con el valor **application/json**.
+
+Finalmente combinar la ruta base con la ruta del endpoint que se desea usar, por ejemplo:
+
+```Bash
+http://localhost:3000/repartidores/cedula/33333a
+```
+
+#### Repartidores
+
+```Bash
+http://localhost:3000/repartidores
+```
+
+| Método  | Ruta                                  | Descripción                               |
+| ------- | ------------------------------------- | ----------------------------------------- |
+| GET     | `/`                                  | Obtener la lista de repartidores          |
+| GET     | `/cedula/:cedula`                    | Obtener un repartidor por número de cédula |
+| GET     | `/correo/:correo`                    | Obtener un repartidor por dirección de correo electrónico |
+| GET     | `/:id`                               | Obtener un repartidor por su ID           |
+| POST    | `/`                                  | Crear un nuevo repartidor                 |
+| PUT     | `/:id`                               | Actualizar la información de un repartidor por su ID |
+| DELETE  | `/:id`                               | Eliminar un repartidor por su ID          |
+
+
+#### Pedidos
+```Bash
+http://localhost:3000/pedidos
+```
+| Método  | Ruta                                   | Descripción                               |
+| ------- | -------------------------------------- | ----------------------------------------- |
+| GET     | `/`                                    | Obtener la lista de pedidos               |
+| GET     | `/:id`                                 | Obtener un pedido por su ID               |
+| GET     | `/cliente/:id`                         | Obtener pedidos por cliente (por su ID)   |
+| GET     | `/repartidor/:id`                      | Obtener pedidos por repartidor (por su ID)|
+| GET     | `/restaurante/:id`                     | Obtener pedidos por restaurante (por su ID)|
+| POST    | `/`                                    | Crear un nuevo pedido                     |
+| PUT     | `/:id`                                 | Actualizar la información de un pedido por su ID |
+
+
+#### Restaurantes
+```Bash
+http://localhost:3000/restaurantes
+```
+
+| Método  | Ruta                                   | Descripción                               |
+| ------- | -------------------------------------- | ----------------------------------------- |
+| GET     | `/`                                    | Obtener la lista de restaurantes          |
+| GET     | `/:id`                                 | Obtener un restaurante por su ID          |
+| POST    | `/`                                    | Crear un nuevo restaurante                |
+| PUT     | `/:id`                                 | Actualizar la información de un restaurante por su ID |
+
+
+#### Clientes
+```Bash
+http://localhost:3000/clientes
+```
+| Método  | Ruta                             | Descripción                               |
+| ------- | -------------------------------- | ----------------------------------------- |
+| GET     | `/getClient/:id`                 | Obtener un cliente por su ID              |
+| GET     | `/getAllClient`                   | Obtener la lista de todos los clientes     |
+| POST    | `/create`                         | Crear un nuevo cliente                     |
+| PUT     | `/update/:id`                     | Actualizar la información de un cliente por su ID |
+
+#### Productos
+```Bash
+http://localhost:3000/productos
+```
+
+| Método  | Ruta                                | Descripción                                         |
+| ------- | ----------------------------------- | --------------------------------------------------- |
+| GET     | `/getProduct/:id`                  | Obtener un producto por su ID                        |
+| GET     | `/getAllProduct`                   | Obtener la lista de todos los productos             |
+| GET     | `/getProductByRestaurant/:id`      | Obtener productos por ID de restaurante              |
+| POST    | `/create`                          | Crear un nuevo producto                              |
+| PUT     | `/update/:id`                      | Actualizar la información de un producto por su ID   |
+
+
+### Modelo Base de Datos
+
+![Modelo Base de Datos](src/img/image.png)
+
+La investigacion realizada sobre Rappi y otros se encuentra en el siguiente [enlace](investigacion/README.md)
+
+### Roadmap - Tareas pendientes
+Se plantea la siguiente lista de tareas pendientes para el proyecto:
+
+- [ ] Que el restaurante pueda editar y eliminar productos que el mismo creo. (Ningún otro restaurante debería poder modificar los productos de otros restaurantes)
+- [ ] Que solo se puedan ver los pedidos que le interesen al usuario, por ejemplo:
+    - Si soy cliente solo deseo ver mis pedidos
+    - Si soy repartidor solo deseo ver los pedidos en los que participe
+    - Si soy restaurante solo deseo ver los pedidos que vendi
+
+- [ ] Cómo usuarios de la aplicación, que solo puedan ellos actualizar y eliminar sus propios datos
+
+- [ ] Eliminar las consultas que se consideren innecesarias
+- [ ] Implementar verificacion del body en el controller
+
+
+
+
+## Autor
+
+- Kevin Gallardo - [@Kevin2606](https://github.com/Kevin2606)
+- Gerson Hernandez - [@GersonHdz](https://github.com/gersonhdz8)
