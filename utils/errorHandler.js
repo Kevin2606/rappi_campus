@@ -3,7 +3,7 @@ import { MongoError } from "mongodb";
 export default (err, req, res, next) => {
     //console.error(err.errInfo.details.schemaRulesNotSatisfied);    
     let errMsg = []    
-    console.log(err)
+    //console.log(err)
     if (err instanceof MongoError)
     {   
         if(err.code === 11000 )
@@ -43,7 +43,13 @@ export default (err, req, res, next) => {
             }   
         }
         res.status(400).json({ status: 400, errMsg });         
+    }
+    if(!err)
+    {
+        res.status(400).json({ status: 400, errMsg:"Error interno del servidor"});  
+    }
+    else{
+        res.status(400).json({ErrorMsg:err});
     } 
-    res.status(400).json({ status: 400, errMsg:"Error interno del servidor" });   
         
 }
