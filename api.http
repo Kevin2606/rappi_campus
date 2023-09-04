@@ -2,10 +2,11 @@
 ### REPARTIDORES ---------------------------------------------------------------------------------------------
 ### Register Repartidor
 POST http://localhost:3000/auth/repartidores/register 
-Content-Type: application/json  
+Accept-Version: 1.0.0
+Content-Type: application/json
 
 {
-    "nombre": "Luis",
+    "nombre": "134",
     "contrasena": "123456",
     "apellido": "Gomez",
     "correo": "luis_gomez@gmail.com",

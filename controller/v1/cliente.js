@@ -1,6 +1,7 @@
 import ClienteModel from "../../model/v1/cliente.js"
 import { crearToken } from "../../middleware/jwt.js";
 import { login, register } from "../../helper/auth.js";
+import { clienteSchema } from "../../schemas/schemas.js";
 
 export default class ClienteController {
 
@@ -20,6 +21,8 @@ export default class ClienteController {
 
     static async registerClient(req,res,next){
         try {
+            const validacion = clienteSchema.safeParse(req.body);
+            if (!validacion.success) return res.status(400).json({ message: validacion.error.errors.map(error => `${error.path} - ${error.message}`)});
             const user = await register(req.body, "clientes");                        
             const token = await crearToken(user._id.toString(), "clientes");
             res.status(200).json({JWT:token, message: "Token creado.",Info:"Usuario registrado correctamente." });
