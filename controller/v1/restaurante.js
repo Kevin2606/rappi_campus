@@ -1,6 +1,7 @@
 import RestauranteModel from "../../model/v1/restaurante.js";
 import { crearToken } from "../../middleware/jwt.js";
 import { login, register } from "../../helper/auth.js";
+import { restauranteSchema } from "../../schemas/schemas.js";
 
 export default class RestauranteController {
     static async loginRestaurante(req, res, next) {
@@ -17,7 +18,7 @@ export default class RestauranteController {
 
     static async registerRestaurante(req, res, next) {
         try {
-            const validacion = repartidorSchema.safeParse(req.body);
+            const validacion = restauranteSchema.safeParse(req.body);
             if (!validacion.success) return res.status(400).json({ message: validacion.error.errors.map(error => `${error.path} - ${error.message}`)});
             const user = await register(req.body, "restaurantes");            
             const token = await crearToken(user._id.toString(), "restaurantes");

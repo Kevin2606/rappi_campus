@@ -19,7 +19,7 @@ export default class PedidoModel {
     
     static async obtenerPedido(id) {
         try {
-            return await db.findOne({ id_pedido: id });
+            return await db.findOne({ id: id });
         } catch (error) {
             return Promise.reject(error);
         }
@@ -68,7 +68,7 @@ export default class PedidoModel {
                 pedido.fecha_pedido = new Date(pedido.fecha_pedido); // Formato: AAAA-MM-DD
             }
             return await db.updateOne(
-                { id_pedido: id },
+                { id: id },
                 { $set: pedido }
             );
         } catch (error) {
@@ -78,7 +78,7 @@ export default class PedidoModel {
 
     static async eliminarPedido(id) {
         try {
-            return await db.deleteOne({ id_pedido: id });
+            return await db.deleteOne({ id: id });
         } catch (error) {
             return Promise.reject(error);
         }

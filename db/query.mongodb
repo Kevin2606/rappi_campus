@@ -76,6 +76,7 @@ db.createCollection("repartidores", {
             title: "repartidores",
             required: [
                 "_id",
+                "id",
                 "nombre",
                 "apellido",
                 "correo",
@@ -136,6 +137,7 @@ db.createCollection("productos", {
             title: "productos",
             required: [
                 "_id",
+                "id",
                 "id_restaurante",
                 "nombre",
                 "valor_unitario",
@@ -171,7 +173,7 @@ db.createCollection("productos", {
         },
     },
 });
-db.productos.createIndex({ id_producto: 1 }, { unique: true });
+db.productos.createIndex({ id: 1 }, { unique: true });
 
 //PEDIDOS
 db.createCollection("pedidos", {
@@ -181,6 +183,7 @@ db.createCollection("pedidos", {
             title: "pedidos",
             required: [
                 "_id",
+                "id",
                 "id_cliente",
                 "id_repartidor",
                 "id_restaurante",
@@ -235,7 +238,7 @@ db.createCollection("pedidos", {
         },
     },
 });
-db.pedidos.createIndex({ id_pedido: 1 }, { unique: true });
+db.pedidos.createIndex({ id: 1 }, { unique: true });
 
 //RESTAURANTES
 db.createCollection("restaurantes", {
@@ -245,6 +248,7 @@ db.createCollection("restaurantes", {
             title: "restaurantes",
             required: [
                 "_id",
+                "id",
                 "nombre",
                 "direccion",
                 "numero_celular",
@@ -344,7 +348,7 @@ db.repartidores.insertMany([
 ]);
 db.productos.insertMany([
     {
-        id_producto: 1,
+        id: 1,
         id_restaurante: 1,
         nombre: "Hamburguesa",
         valor_unitario: 2000,
@@ -354,7 +358,7 @@ db.productos.insertMany([
         stock: 10,
     },
     {
-        id_producto: 2,
+        id: 2,
         id_restaurante: 1,
         nombre: "Pizza",
         valor_unitario: 15000,
@@ -366,7 +370,7 @@ db.productos.insertMany([
 ]);
 db.pedidos.insertMany([
     {
-        id_pedido: 1,
+        id: 1,
         id_cliente: 1,
         id_repartidor: 1,
         id_restaurante: 1,
@@ -385,7 +389,7 @@ db.pedidos.insertMany([
         fecha_pedido: new Date(),
     },
     {
-        id_pedido: 2,
+        id: 2,
         id_cliente: 2,
         id_repartidor: 2,
         id_restaurante: 1,

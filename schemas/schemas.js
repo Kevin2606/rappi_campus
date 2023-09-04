@@ -50,7 +50,7 @@ const productoSchema = z.object({
     nombre: z.string().min(3).max(50),
     valor_unitario: z.number().min(0),
     descripcion: z.string().min(3).max(50),
-    foto_producto: z.string().min(3).max(50),
+    foto_producto: z.string().min(3),
     stock: z.number().min(0),
 })
 /*
@@ -136,7 +136,7 @@ const restauranteSchema = z.object({
     correo: z.string().email(),
     contrasena: z.string().min(3).max(50),
     horario_atencion: z.string().min(3).max(50),
-    foto_restaurante: z.string().min(3).max(50),
+    foto_restaurante: z.string().min(3),
 })
 
 export { clienteSchema, repartidorSchema, productoSchema, pedidoSchema, restauranteSchema };

@@ -8,7 +8,7 @@ export default class ProductoModel{
     static async getProduct(id)
     {
         try {
-            const getProduct=await db.findOne({ id_producto: id });
+            const getProduct=await db.findOne({ id: id });
             if(!getProduct)
             {   
                 console.log("Restaurante no encontrado")
@@ -69,7 +69,7 @@ export default class ProductoModel{
     {
         try {
             //producto.id_producto = await getNextSequenceValue("productos");
-            return await db.insertOne(producto);
+            return await insertWithTransaction(producto,collection)
         } catch (error) {
             return Promise.reject(error);
         }
@@ -80,7 +80,7 @@ export default class ProductoModel{
     {   
         try {
 
-            const removeProduct= await db.deleteOne({id_producto:id})
+            const removeProduct= await db.deleteOne({id:id})
             if(removeProduct.acknowledged && removeProduct.deletedCount>0)
             {
                 console.log("Producto eliminado correctamente");
@@ -114,7 +114,7 @@ export default class ProductoModel{
     {
         try {            
             const updateProduct= await db.updateOne(
-                {id_cliente:id},
+                {id:id},
                 {$set:dataUpdateProduct}
                 );
             console.log("Datos actualizados correctamente");
