@@ -11,7 +11,6 @@ export default class ProductoModel{
             const getProduct=await db.findOne({ id_producto: id });
             if(!getProduct)
             {   
-                console.log("Restaurante no encontrado")
                 return {status:400, message: "Restaurante no encontrado"}
             }
             return getProduct
@@ -53,7 +52,6 @@ export default class ProductoModel{
                 ]).toArray();
                 if(!products)
                 {   
-                    console.log("Restaurante no encontrado")
                     return {status:400, message: "Restaurante no encontrado"}
                 }
             return products 
@@ -83,7 +81,6 @@ export default class ProductoModel{
             const removeProduct= await db.deleteOne({id_producto:id})
             if(removeProduct.acknowledged && removeProduct.deletedCount>0)
             {
-                console.log("Producto eliminado correctamente");
                 return  {status:400, message: "Prodcuto eliminado Correctamente"} 
             }
             return removeProduct
@@ -100,7 +97,6 @@ export default class ProductoModel{
             const removeProduct= await db.remove({id_restaurante:id_rest})
             if(removeProduct.acknowledged && removeProduct.deletedCount>0)
             {
-                console.log("Productos eliminados correctamente");
                 return  {status:400, message: "Prodcutos eliminados Correctamente"} 
             }
             return removeProduct
@@ -117,7 +113,6 @@ export default class ProductoModel{
                 {id_cliente:id},
                 {$set:dataUpdateProduct}
                 );
-            console.log("Datos actualizados correctamente");
             return updateProduct   
         } 
         catch (error) {            

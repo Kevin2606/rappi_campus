@@ -12,7 +12,6 @@ export default class ClienteModel{
             const getClient=await db.findOne({ id: id });
             if(!getClient)
             {   
-                console.log("Usuario no encontrado")
                 return {status:400, message: "Usuario no encontrado"}
             }
             return getClient
@@ -45,14 +44,12 @@ export default class ClienteModel{
             const removeClient= await db.deleteOne({id:id})
             if(removeClient.acknowledged && removeClient.deletedCount>0)
             {
-                console.log("Cliente eliminado correctamente");
                 return  {status:400, message: "Cliente eliminado Correctamente"} 
             }
             return getClient
         } 
         catch (error) {
 
-            console.log(error.message);            
             return Promise.reject(error); 
             
         }       
@@ -68,7 +65,6 @@ export default class ClienteModel{
 
             if(updateClient.acknowledged && updateClient.matchedCount>0)
             {
-                console.log("Datos actualizados correctamente");
                 return {status:400, message:"Datos actualizados correctamente" }
             }
             return updateClient

@@ -18,7 +18,6 @@ export default class RepartidorModel {
             const repartidor= await db.findOne({ id: id });
             if(!repartidor)
             {   
-                console.log("Repartidor no encontrado")
                 return {status:400, message: "Repartidor no encontrado"}
             }
             return repartidor
@@ -44,7 +43,6 @@ export default class RepartidorModel {
             );
             if(updateRepartidor.acknowledged && updateRepartidor.matchedCount>0)
             {
-                console.log("Datos actualizados correctamente");
                 return {status:400, message:"Datos actualizados correctamente" }
             }
             return updateRepartidor 
@@ -58,7 +56,6 @@ export default class RepartidorModel {
             const removeRepartidor= await db.deleteOne({ id: id });
             if(removeRepartidor.acknowledged && removeRepartidor.deletedCount>0)
             {
-                console.log("Cliente eliminado correctamente");
                 return  {status:400, message: "Cliente eliminado Correctamente"} 
             }
             return removeRepartidor
@@ -72,7 +69,6 @@ export default class RepartidorModel {
             const repartidor= await db.findOne({ cedula: cedula });
             if(!repartidor)
             {   
-                console.log("Repartidor no encontrado")
                 return {status:400, message: "Repartidor no encontrado"}
             }
             return repartidor
@@ -86,7 +82,6 @@ export default class RepartidorModel {
             const repartidor= await db.findOne({ correo: correo });
             if(!repartidor)
             {   
-                console.log("Repartidor no encontrado")
                 return {status:400, message: "Repartidor no encontrado"}
             }
             return repartidor
