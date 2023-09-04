@@ -145,7 +145,7 @@ db.createCollection("productos", {
             ],
             properties: {
                 _id: { bsonType: "objectId" },
-                id_producto: {
+                id: {
                     bsonType: "int",
                 },
                 id_restaurante: {
@@ -155,7 +155,7 @@ db.createCollection("productos", {
                     bsonType: "string",
                 },
                 valor_unitario: {
-                    bsonType: "decimal",
+                    bsonType: "int",
                 },
                 descripcion: {
                     bsonType: "string",
@@ -181,7 +181,6 @@ db.createCollection("pedidos", {
             title: "pedidos",
             required: [
                 "_id",
-                "id_pedido",
                 "id_cliente",
                 "id_repartidor",
                 "id_restaurante",
@@ -192,6 +191,9 @@ db.createCollection("pedidos", {
             ],
             properties: {
                 _id: { bsonType: "objectId" },
+                id: {
+                    bsonType: "int",
+                },
                 id_pedido: {
                     bsonType: "int",
                 },
@@ -223,7 +225,7 @@ db.createCollection("pedidos", {
                     enum: ["Efectivo", "Tarjeta"],
                 },
                 valor_total: {
-                    bsonType: "decimal",
+                    bsonType: "int",
                 },
                 fecha_pedido: {
                     bsonType: "date",
@@ -243,7 +245,6 @@ db.createCollection("restaurantes", {
             title: "restaurantes",
             required: [
                 "_id",
-                "id",
                 "nombre",
                 "direccion",
                 "numero_celular",
@@ -346,7 +347,7 @@ db.productos.insertMany([
         id_producto: 1,
         id_restaurante: 1,
         nombre: "Hamburguesa",
-        valor_unitario: Decimal128("2000"),
+        valor_unitario: 2000,
         descripcion: "Hamburguesa con queso",
         foto_producto:
             "https://assets.unileversolutions.com/recipes-v2/115358.jpg",
@@ -356,7 +357,7 @@ db.productos.insertMany([
         id_producto: 2,
         id_restaurante: 1,
         nombre: "Pizza",
-        valor_unitario: Decimal128("15000"),
+        valor_unitario: 15000,
         descripcion: "Pizza de peperoni",
         foto_producto:
             "https://www.olivetto.com.co/wp-content/uploads/PizzaItalianaClasica-ImagenDestacada-1200x1800.jpg",
@@ -380,7 +381,7 @@ db.pedidos.insertMany([
             },
         ],
         metodo_pago: "Efectivo",
-        valor_total: Decimal128("35000"),
+        valor_total: 35000,
         fecha_pedido: new Date(),
     },
     {
@@ -395,7 +396,7 @@ db.pedidos.insertMany([
             },
         ],
         metodo_pago: "Tarjeta",
-        valor_total: Decimal128("2000"),
+        valor_total: 2000,
         fecha_pedido: new Date(),
     },
 ]);

@@ -1,6 +1,7 @@
 import { MongoError } from "mongodb";
 
 export default (err, req, res, next) => {
+    console.log(err)
     //console.error(err.errInfo.details.schemaRulesNotSatisfied);    
     let errMsg = []    
     //console.log(err)
