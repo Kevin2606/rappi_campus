@@ -18,7 +18,6 @@ export default class RestauranteModel {
             const getRestaurantes= await db.findOne({ id: id });
             if(!getRestaurantes)
             {   
-                console.log("Restaurante no encontrado")
                 return {status:400, message: "Restaurante no encontrado"}
             }
             return getRestaurantes
@@ -44,7 +43,6 @@ export default class RestauranteModel {
             );
             if(updateRestaurante.acknowledged && updateRestaurante.matchedCount>0)
             {
-                console.log("Datos actualizados correctamente");
                 return {status:400, message:"Datos actualizados correctamente" }
             }
             return updateRestaurante
@@ -58,7 +56,6 @@ export default class RestauranteModel {
             const removeRestaurante= await db.deleteOne({ id: id });
             if(removeRestaurante.acknowledged && removeRestaurante.deletedCount>0)
             {
-                console.log("Cliente eliminado correctamente");
                 return  {status:400, message: "Cliente eliminado Correctamente"} 
             }
             return removeRestaurante

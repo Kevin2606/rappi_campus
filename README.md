@@ -216,7 +216,7 @@ http://localhost:3000/productos
 La investigacion realizada sobre Rappi y otros se encuentra en el siguiente [enlace](investigacion/README.md)
 
 ### Roadmap - Tareas pendientes
-Se plantea la siguiente lista de tareas pendientes para el proyecto:
+Se plantea la siguiente lista de tareas pendientes para el proyecto, estas tareas pendientes haran parte de la version 2.0 del proyecto y se agregara a la version api 2.0:
 
 - [ ] Que el restaurante pueda editar y eliminar productos que el mismo creo. (Ningún otro restaurante debería poder modificar los productos de otros restaurantes)
 - [ ] Que solo se puedan ver los pedidos que le interesen al usuario, por ejemplo:
