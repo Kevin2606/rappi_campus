@@ -155,7 +155,7 @@ db.createCollection("productos", {
                     bsonType: "string",
                 },
                 valor_unitario: {
-                    bsonType: "decimal",
+                    bsonType: "int",
                 },
                 descripcion: {
                     bsonType: "string",
@@ -223,7 +223,7 @@ db.createCollection("pedidos", {
                     enum: ["Efectivo", "Tarjeta"],
                 },
                 valor_total: {
-                    bsonType: "decimal",
+                    bsonType: "int",
                 },
                 fecha_pedido: {
                     bsonType: "date",
