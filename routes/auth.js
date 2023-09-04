@@ -2,10 +2,13 @@ import { Router } from 'express';
 import RepartidorController from '../controller/repartidor.js';
 import ClienteController from '../controller/cliente.js';
 import RestauranteController from '../controller/restaurante.js';
+import {limitLogin} from '../config/limit.js';
+
 
 const router = Router();
 
 router
+.use(limitLogin())
 .post('/repartidores/login', RepartidorController.loginRepartidor)
 .post('/repartidores/register', RepartidorController.registerRepartidor)
 .post('/clientes/login', ClienteController.loginClient)

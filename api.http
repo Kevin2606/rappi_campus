@@ -6,11 +6,11 @@ Content-Type: application/json
 
 {
     "nombre": "Luis",
-    "contrasena": "123456",
-    "apellido": "Gomez",
-    "correo": "luis_gomez@gmail.com",
-    "numero_celular": "3001234567",
-    "cedula": "33333",
+    "contrasena": "123456a",
+    "apellido": "Gomeza",
+    "correo": "luis_gomeza@gmail.com",
+    "numero_celular": "3001234567a",
+    "cedula": "33333a",
     "fecha_nacimiento": "1990-01-01",
     "sexo": "M",
     "tipo_vehiculo": "Carro"
