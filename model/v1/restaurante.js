@@ -1,5 +1,5 @@
-import connect from "../db/connectDB.js";
-import insertWithTransaction from "../helper/transaction.js";
+import connect from "../../db/connectDB.js";
+import insertWithTransaction from "../../helper/transaction.js";
 
 const collection= "restaurantes"
 const db = (await connect()).db().collection(collection);

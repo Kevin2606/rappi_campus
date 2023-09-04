@@ -27,9 +27,7 @@ export default async function insertWithTransaction(data,collection) {
                 { session, returnOriginal: false }
             );
 
-            data.id = doc.value.sequence_value;
-            console.log(data.id);
-
+            data.id = doc.value.sequence_value;            
             const clientesCollection = conexion.db().collection(collection);
             await clientesCollection.insertOne(data,{ session });
             await session.commitTransaction();

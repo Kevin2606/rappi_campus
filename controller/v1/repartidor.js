@@ -1,15 +1,14 @@
-import RepartidorModel from '../model/repartidor.js';
-import { crearToken } from "../middleware/jwt.js";
-import { login, register } from "../helper/auth.js";
+import RepartidorModel from '../../model/v1/repartidor.js';
+import { crearToken } from "../../middleware/jwt.js";
+import { login, register } from "../../helper/auth.js";
 
-export default class RepartidorControllerV1 {
+export default class RepartidorController {
     static async loginRepartidor(req, res, next) {
         try {            
             const user = await login(req.body, "repartidores");               
             const token = await crearToken(user._id.toString(), "repartidores");
             res.status(200).json({ JWT:token, Info:"Usuario logueado correctamente." });
-        } catch (error) {
-            //console.log(error);
+        } catch (error) {            
             next(error);
         }
     }

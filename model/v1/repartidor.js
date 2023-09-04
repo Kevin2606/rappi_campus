@@ -1,5 +1,5 @@
-import connect from "../db/connectDB.js";
-import insertWithTransaction from "../helper/transaction.js";
+import connect from "../../db/connectDB.js";
+import insertWithTransaction from "../../helper/transaction.js";
 
 const collection= "repartidores"
 const db = (await connect()).db().collection(collection);
@@ -45,7 +45,10 @@ export default class RepartidorModel {
             if(updateRepartidor.acknowledged && updateRepartidor.matchedCount>0)
             {
                 console.log("Datos actualizados correctamente");
-                return {status:400, message:"Datos actualizados correctamente" }
+                return {status:400, message:"Datos actualizados correctamente." }
+            }
+            else{
+                return {status:400, message:"No fue posible actualizar datos." } 
             }
             return updateRepartidor 
         } catch (error) {

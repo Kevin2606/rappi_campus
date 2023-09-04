@@ -1,4 +1,4 @@
-import ProductoModel from "../model/producto.js"
+import ProductoModel from "../../model/v1/producto.js"
 
 export default class ProductoController {
     static async getProduct(req,res,next){

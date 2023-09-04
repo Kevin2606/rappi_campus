@@ -1,6 +1,6 @@
-import ClienteModel from "../model/cliente.js"
-import { crearToken } from "../middleware/jwt.js";
-import { login, register } from "../helper/auth.js";
+import ClienteModel from "../../model/v1/cliente.js"
+import { crearToken } from "../../middleware/jwt.js";
+import { login, register } from "../../helper/auth.js";
 
 export default class ClienteController {
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import RepartidorController from '../controller/repartidor.js';
-import ClienteController from '../controller/cliente.js';
-import RestauranteController from '../controller/restaurante.js';
+import RepartidorController from '../controller/v1/repartidor.js';
+import ClienteController from '../controller/v1/cliente.js';
+import RestauranteController from '../controller/v1/restaurante.js';
 import {limitLogin} from '../config/limit.js';
 
 

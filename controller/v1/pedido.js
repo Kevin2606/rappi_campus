@@ -1,4 +1,4 @@
-import PedidoModel from '../model/pedido.js';
+import PedidoModel from '../../model/v1/pedido.js';
 
 export default class PedidoController {
     static async obtenerPedidos(req, res, next) {

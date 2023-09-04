@@ -1,6 +1,6 @@
-import RestauranteModel from "../model/restaurante.js";
-import { crearToken } from "../middleware/jwt.js";
-import { login, register } from "../helper/auth.js";
+import RestauranteModel from "../../model/v1/restaurante.js";
+import { crearToken } from "../../middleware/jwt.js";
+import { login, register } from "../../helper/auth.js";
 
 export default class RestauranteController {
     static async loginRestaurante(req, res, next) {
